@@ -6,14 +6,14 @@
     <form class="row">
         <div class="mb-3">
             <label for="loginEmail" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="loginEmail">
+            <input type="email" class="form-control" name="loginEmail" [(ngModel)]="email">
         </div>
         <div class="mb-3">
             <label for="loginSenha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="loginSenha">
+            <input type="password" class="form-control" name="loginSenha" [(ngModel)]="senha">
         </div>
         <div name="loginAlerts"></div>
         <button type="submit" class="btn btn-primary">Entrar</button>
-        <a class="text-center" href="">Esqueceu sua senha?</a>
+        <a class="text-center" (click)="placeHolderResetSenha()" href="">Esqueceu sua senha?</a>
     </form>
 </div>

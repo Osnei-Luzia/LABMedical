@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
-
+  email : String = ""
+  senha: String = ""
+  placeHolderResetSenha(){
+    alert("Funcionalidade em construção")
+  }
 }
