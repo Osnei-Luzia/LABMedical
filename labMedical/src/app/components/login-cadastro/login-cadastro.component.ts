@@ -6,8 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-cadastro.component.css']
 })
 export class LoginCadastroComponent {
-  email: String = ""
   nome: String = ""
+  email: String = ""
   senha: String = ""
   confirmarSenha: String = ""
+  onSubmit(){
+  
+  }
 }
