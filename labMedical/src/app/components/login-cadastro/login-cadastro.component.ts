@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario';
+import { TabelaUsuarioService } from 'src/app/services/tabela-usuario.service';
 
 @Component({
   selector: 'labM-login-cadastro',
@@ -13,10 +15,13 @@ export class LoginCadastroComponent {
 
   onSubmit(form: any) {
     if (form.valid) {
-      alert("válido")
-      form.reset()
-    } else {
-      alert("inválido")
+      let usuario: Usuario = {
+        id: "",
+        nome: this.nome,
+        email: this.email,
+        senha: this.senha
+      }
+      TabelaUsuarioService.prototype.cadastrar(usuario)
     }
   }
 }
