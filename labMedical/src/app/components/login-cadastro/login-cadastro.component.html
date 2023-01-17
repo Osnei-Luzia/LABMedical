@@ -12,12 +12,14 @@
                         <label for="nome" class="form-label">Nome</label>
                         <input #inputNome="ngModel" type="text" class="form-control" name="nome" [(ngModel)]="nome"
                             required placeholder="Digite seu nome">
+                        <div *ngIf="!inputNome.valid&&inputNome.touched" class="alert alert-danger">Campo Obrigatório
+                        </div>
                     </div>
-                    <div *ngIf="!inputNome.valid&&inputNome.touched" class="alert alert-danger">Campo Obrigatório</div>
                     <div class="mb-3 form-group">
                         <label for="emailCadastro" class="form-label">E-mail</label>
                         <input #inputEmail="ngModel" type="email" class="form-control" name="emailCadastro"
-                            [(ngModel)]="email" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" placeholder="example@example.com">
+                            [(ngModel)]="email" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                            placeholder="example@example.com">
                         <div *ngIf="inputEmail.errors?.['required']&&inputEmail.touched" class="alert alert-danger">
                             Campo Obrigatório</div>
                         <div *ngIf="inputEmail.errors?.['pattern']&&inputEmail.touched" class="alert alert-danger">
@@ -26,7 +28,8 @@
                     <div class="mb-3 form-group">
                         <label for="senhaCadastro" class="form-label">Senha</label>
                         <input #inputSenha="ngModel" type="password" class="form-control" name="senhaCadastro"
-                            [(ngModel)]="senha" required minlength="8" placeholder="Mínimo de 8 caracteres">
+                            [(ngModel)]="senha" required labMMatchingPassword value=""
+                            [senha]="inputConfirmarSenha.value" minlength="8" placeholder="Mínimo de 8 caracteres">
                         <div *ngIf="inputSenha.errors?.['required']&&inputSenha.touched" class="alert alert-danger">
                             Campo Obrigatório</div>
                         <div *ngIf="inputSenha.errors?.['minlength']&&inputSenha.touched" class="alert alert-danger">
@@ -35,7 +38,11 @@
                     <div class="mb-3 form-group">
                         <label for="senhaValida" class="form-label">Confirmar Senha</label>
                         <input #inputConfirmarSenha="ngModel" type="password" class="form-control" name="senhaValida"
-                            [(ngModel)]="confirmarSenha" >
+                            [(ngModel)]="confirmarSenha" required labMMatchingPassword value=""
+                            [senha]="inputSenha.value">
+                        <div *ngIf="inputConfirmarSenha.errors?.['required']&&inputConfirmarSenha.touched"
+                            class="alert alert-danger">Campo
+                            Obrigatório</div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -43,6 +50,7 @@
                     <button type="reset" class="btn btn-primary">Limpar</button>
                 </div>
             </form>
+
         </div>
     </div>
 </div>

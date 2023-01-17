@@ -5,16 +5,17 @@ import { Component } from '@angular/core';
   templateUrl: './login-cadastro.component.html',
   styleUrls: ['./login-cadastro.component.css']
 })
-export class LoginCadastroComponent{
+export class LoginCadastroComponent {
   nome: String = ""
   email: String = ""
   senha: String = ""
   confirmarSenha: String = ""
-  onSubmit(cadastroUsuario:any){
-    if(cadastroUsuario.valid){
+
+  onSubmit(form: any) {
+    if (form.valid) {
       alert("válido")
-      cadastroUsuario.reset()
-    }else{
+      form.reset()
+    } else {
       alert("inválido")
     }
   }
