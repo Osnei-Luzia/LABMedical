@@ -1,1 +1,20 @@
-<labM-login-form></labM-login-form>
+<div class="d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs d-flex justify-content-between">
+                <li class="nav-item">
+                    <a class="nav-link" (click)="status='login'" [ngClass]="{'active':status=='login'}"
+                        aria-current="true" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="status='registro'" [ngClass]="{'active':status=='registro'}"
+                        href="#">Registro</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+                <labM-login-form *ngIf="status=='login'"></labM-login-form>
+                <labM-login-cadastro *ngIf="status=='registro'"></labM-login-cadastro>
+        </div>
+    </div>
+</div>
