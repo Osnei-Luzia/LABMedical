@@ -22,6 +22,7 @@ export class LoginCadastroComponent {
         senha: this.senha
       }
       TabelaUsuarioService.prototype.cadastrar(usuario)
+      form.reset()
     }
   }
 }

@@ -29,7 +29,6 @@ export class MatchingPasswordDirective implements Validator {
   constructor() { }
 
   public validate(control: AbstractControl): ValidationErrors | null {
-    console.log(this.senha)
     return matchingPassword(this.senha)(control);
   }
 }

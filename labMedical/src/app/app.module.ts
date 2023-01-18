@@ -8,6 +8,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { FormsModule } from '@angular/forms';
 import { LoginCadastroComponent } from './components/login-cadastro/login-cadastro.component';
 import { MatchingPasswordDirective } from './directives/matching-password.directive';
+import { AvailableEmailDirective } from './directives/available-email.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MatchingPasswordDirective } from './directives/matching-password.direct
     LoginComponent,
     LoginFormComponent,
     LoginCadastroComponent,
-    MatchingPasswordDirective
+    MatchingPasswordDirective,
+    AvailableEmailDirective
   ],
   imports: [
     BrowserModule,
