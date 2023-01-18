@@ -3,14 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { FormsModule } from '@angular/forms';
+import { LoginCadastroComponent } from './components/login-cadastro/login-cadastro.component';
+import { MatchingPasswordDirective } from './directives/matching-password.directive';
+import { AvailableEmailDirective } from './directives/available-email.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    LoginFormComponent,
+    LoginCadastroComponent,
+    MatchingPasswordDirective,
+    AvailableEmailDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

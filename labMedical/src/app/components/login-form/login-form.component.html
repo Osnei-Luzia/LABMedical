@@ -1,0 +1,15 @@
+<form class="card-body" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label for="loginEmail" class="form-label">E-mail</label>
+        <input type="email" class="form-control" name="loginEmail" [(ngModel)]="email">
+    </div>
+    <div class="mb-3">
+        <label for="loginSenha" class="form-label">Senha</label>
+        <input type="password" class="form-control" name="loginSenha" [(ngModel)]="senha">
+    </div>
+    <div *ngIf="status" name="loginAlerts" class="alert alert-danger">Email e ou senha incorretos</div>
+    <div class="row">
+        <button type="submit" class="btn btn-primary mb-3">Entrar</button>
+        <a class="text-center" (click)="placeHolderResetSenha()" href="">Esqueceu sua senha?</a>
+    </div>
+</form>
