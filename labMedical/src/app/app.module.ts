@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { LoginCadastroComponent } from './components/login-cadastro/login-cadastro.component';
 import { MatchingPasswordDirective } from './directives/matching-password.directive';
 import { AvailableEmailDirective } from './directives/available-email.directive';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { MainComponent } from './pages/main/main.component';
+import { CaptalizeFirstPipe } from './pipes/captalize-first.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { AvailableEmailDirective } from './directives/available-email.directive'
     LoginFormComponent,
     LoginCadastroComponent,
     MatchingPasswordDirective,
-    AvailableEmailDirective
+    AvailableEmailDirective,
+    InicioComponent,
+    MainComponent,
+    CaptalizeFirstPipe
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+<!-- estatísticas -->
+<div class="row">
+    <div *ngFor="let estatistica of estatisticas;" class="card" style="width: 12rem;">
+        <img src={{estatistica.img}} class="card-img-top" alt="...">
+        <div class="card-body row text-center">
+            <p class="card-text">{{estatistica.nome}}</p>
+            <span>{{estatistica.quantidade}}</span>
+        </div>
+    </div>
+</div>
+<!-- busca de pacientes -->
+<div>
+    <input type="text">
+    <button> Buscar</button>
+</div>
+<!-- lista de pacientes -->
+<ul>
+    <li>
+
+    </li>
+</ul>
