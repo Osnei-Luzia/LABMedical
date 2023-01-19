@@ -12,6 +12,8 @@ import { AvailableEmailDirective } from './directives/available-email.directive'
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MainComponent } from './pages/main/main.component';
 import { CaptalizeFirstPipe } from './pipes/captalize-first.pipe';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CaptalizeFirstPipe } from './pipes/captalize-first.pipe';
     AvailableEmailDirective,
     InicioComponent,
     MainComponent,
-    CaptalizeFirstPipe
+    CaptalizeFirstPipe,
+    ToolbarComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
