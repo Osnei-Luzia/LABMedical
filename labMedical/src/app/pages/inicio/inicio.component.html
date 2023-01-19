@@ -1,5 +1,5 @@
 <!-- estatísticas -->
-<div class="row">
+<div class="d-flex justify-content-around p-4">
     <div *ngFor="let estatistica of estatisticas;" class="card" style="width: 12rem;">
         <img src={{estatistica.img}} class="card-img-top" alt="...">
         <div class="card-body row text-center">
@@ -9,26 +9,15 @@
     </div>
 </div>
 <!-- busca de pacientes -->
-<div>
-    <input type="text">
-    <button> Buscar </button>
+<div class="input-group p-4">
+    <input type="text" class="form-control" placeholder="Nome, Telefone ou E-mail" aria-label="Nome, Telefone ou E-mail"
+        aria-describedby="button-addon2">
+    <button class="btn btn-outline-primary" type="button" id="button-addon2">Procurar</button>
 </div>
+
 <!-- lista de pacientes -->
 <ul>
     <li>
-        <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                Toggle width collapse
-            </button>
-        </p>
-        <div style="min-height: 120px;">
-            <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                <div class="card card-body" style="width: 300px;">
-                    This is some placeholder content for a horizontal collapse. It's hidden by default and shown when
-                    triggered.
-                </div>
-            </div>
-        </div>
+        texto
     </li>
 </ul>
