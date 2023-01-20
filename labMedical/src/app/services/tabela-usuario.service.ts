@@ -16,7 +16,7 @@ export class TabelaUsuarioService {
     checar se storage.item == usuario nome+posicao, posicao++
     */
     data.id = crypto.randomUUID()
-    localStorage.setItem(`usuario${data.id}`, JSON.stringify(data))
+    localStorage.setItem(`usuario_${data.id}`, JSON.stringify(data))
 
     // {usuario1, Nome, Email, Senha},{exame3, Paciente, Treco, Negocio},{consulta2....}
     // usuario1, exame3, consulta2, usuario2

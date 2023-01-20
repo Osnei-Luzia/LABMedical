@@ -1,23 +1,37 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component } from '@angular/core';
+import { Exame } from 'src/app/models/exame';
+import { TabelaExameService } from 'src/app/services/tabela-exame.service';
 
 @Component({
   selector: 'labM-exame-cadastro',
   templateUrl: './exame-cadastro.component.html',
   styleUrls: ['./exame-cadastro.component.css']
 })
-export class ExameCadastroComponent implements DoCheck{
+export class ExameCadastroComponent {
   date: any = new Date()
-  exame: String = ""
+  nomeExame: String = ""
   dataExame: String = ""
   horaExame: String = `${this.date.getHours()}:${this.date.getMinutes()}`
   tipo: String = ""
   laboratorio: String = ""
   url: String = ""
-  resultado: String = ""
+  resultados: String = ""
   onSubmit(form: any) {
-
-  }
-  ngDoCheck(): void {
-    this.horaExame = `${this.date.getHours()}:${this.date.getMinutes()}`
+    if (form.valid) {
+      let exame: Exame = {
+        id: "",
+        nomeExame: this.nomeExame,
+        dataExame: this.dataExame,
+        horaExame: this.horaExame,
+        tipo: this.tipo,
+        laboratorio: this.laboratorio,
+        url: this.url,
+        //resultado: this.resultado,
+        resultados: this.resultados
+      }
+      TabelaExameService.prototype.cadastrar(exame)
+      console.log(TabelaExameService.prototype.buscar())
+      form.reset()
+    }
   }
 }

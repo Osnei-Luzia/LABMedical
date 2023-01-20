@@ -125,7 +125,7 @@
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="convenioNumero" class="form-label">Número do Convênio</label>
-                <input #inputConvenio="ngModel" type="number" class="form-control" name="convenioNumero"
+                <input #inputConvenio="ngModel" type="text" class="form-control" name="convenioNumero"
                     [(ngModel)]="convenioNumero" placeholder="00">
             </div>
             <div class="d-flex flex-column flex-grow-1">
@@ -139,13 +139,15 @@
         <div class="mb-3 form-group d-flex gap-3">
             <div class="flex-grow-1">
                 <label class="form-label" for="alergias">Alergias</label>
-                <textarea class="form-control" style="resize:none; height:7rem" placeholder="Liste as alergias"
-                    name="alergias" [ngModel]="alergias"></textarea>
+                <textarea #inputAlergias="ngModel" type="text" class="form-control" name="alergias"
+                    style="resize:none; height:7rem" [(ngModel)]="alergias"
+                    placeholder="Liste as alergias"></textarea>
             </div>
             <div class="flex-grow-1" style="resize:disable">
                 <label class="form-label" for="cuidados">Cuidados Especiais</label>
-                <textarea class="form-control" style="resize:none; height:7rem"
-                    placeholder="Descreva os cuidados necessários" name="cuidados" [ngModel]="cuidados"></textarea>
+                <textarea #inputCuidados="ngModel" type="text" class="form-control" name="cuidados"
+                    style="resize:none; height:7rem" [(ngModel)]="cuidados"
+                    placeholder="Descreva os cuidados necessários"></textarea>
             </div>
             <!-- ngModel typescript -->
         </div>

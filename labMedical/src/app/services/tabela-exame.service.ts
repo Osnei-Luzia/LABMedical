@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Paciente } from '../models/paciente';
+import { Exame } from '../models/exame';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TabelaPacienteService {
-  cadastrar(data: Paciente) {
+export class TabelaExameService {
+  cadastrar(data: Exame) {
     data.id = crypto.randomUUID()
-    localStorage.setItem(`paciente_${data.id}`, JSON.stringify(data))
-
+    localStorage.setItem(`exame_${data.id}`, JSON.stringify(data))
   }
   buscar() {
-    const chaves = Object.keys(localStorage).filter((items) => { return items.includes("paciente") })
+    const chaves = Object.keys(localStorage).filter((items) => { return items.includes("exame") })
     let storage: any[] = []
     Object.values(chaves).forEach((chave, Index) => {
       storage.push(localStorage.getItem(chave))

@@ -49,7 +49,6 @@ export class PacienteCadastroComponent {
         convenioValidade: this.convenioValidade,
       }
       TabelaPacienteService.prototype.cadastrar(paciente)
-      console.log(TabelaPacienteService.prototype.buscar())
       form.reset()
     }
 
