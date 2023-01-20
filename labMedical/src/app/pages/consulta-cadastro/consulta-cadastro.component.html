@@ -26,11 +26,11 @@
             </div>
         </div>
         <div class="mb-3 form-group d-flex gap-3">
-            <div class="flex-grow-1">
-                <label class="form-label" for="descricao">Descrição</label>
-                <textarea #inputDescricao="ngModel" class="form-control" style="resize:none; height:10rem"
-                    placeholder="Descreva o problema" name="descricao" [ngModel]="descricao" required maxlength="1024"
-                    minlength="16"></textarea>
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea #inputDescricao="ngModel" type="text" class="form-control" name="descricao"
+                    style="resize:none; height:7rem" [(ngModel)]="descricao" placeholder="Descreva o problema" required
+                    minlength="16" maxlength="1024"></textarea>
                 <div *ngIf="inputDescricao.errors?.['required']&&inputDescricao.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputDescricao.errors?.['minlength']&&inputDescricao.touched" class="alert alert-danger">
@@ -38,11 +38,10 @@
             </div>
         </div>
         <div class="mb-3 form-group d-flex gap-3">
-            <div class="flex-grow-1">
-                <label class="form-label" for="medicacao">Medicação Receitada</label>
-                <textarea #inputMedicacao="ngModel" class="form-control" style="resize:none; height:7rem"
-                    placeholder="Receita" name="medicacao" [ngModel]="medicacao" maxlength="256 "
-                    minlength="16"></textarea>
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="medicacao" class="form-label">Medicação Receitada</label>
+                <textarea #inputMedicacao="ngModel" type="text" class="form-control" name="medicacao"
+                    style="resize:none; height:7rem" [(ngModel)]="medicacao" placeholder="Receita"></textarea>
                 <div *ngIf="inputMedicacao.errors?.['required']&&inputMedicacao.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputMedicacao.errors?.['minlength']&&inputMedicacao.touched" class="alert alert-danger">
@@ -50,11 +49,11 @@
             </div>
         </div>
         <div class="mb-3 form-group d-flex gap-3">
-           <div class="flex-grow-1">
-                <label class="form-label" for="precaucoes">Dosagem Receitada</label>
-                <textarea #inputPrecaucoes="ngModel" class="form-control" style="resize:none; height:7rem"
-                    placeholder="Dosagem e Precauções" name="precaucoes" required [ngModel]="precaucoes"
-                    maxlength="256 " minlength="16"></textarea>
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="precaucoes" class="form-label">Dosagem Receitada</label>
+                <textarea #inputPrecaucoes="ngModel" type="text" class="form-control" name="precaucoes"
+                    style="resize:none; height:7rem" [(ngModel)]="precaucoes" placeholder="Dosagem e Precauções"
+                    required maxlength="256 " minlength="16"></textarea>
                 <div *ngIf="inputPrecaucoes.errors?.['required']&&inputPrecaucoes.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputPrecaucoes.errors?.['minlength']&&inputPrecaucoes.touched" class="alert alert-danger">

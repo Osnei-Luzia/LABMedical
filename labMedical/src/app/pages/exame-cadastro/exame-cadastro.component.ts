@@ -8,7 +8,7 @@ import { TabelaExameService } from 'src/app/services/tabela-exame.service';
   styleUrls: ['./exame-cadastro.component.css']
 })
 export class ExameCadastroComponent {
-  date: any = new Date()
+  date: Date = new Date()
   nomeExame: String = ""
   dataExame: String = ""
   horaExame: String = `${this.date.getHours()}:${this.date.getMinutes()}`
