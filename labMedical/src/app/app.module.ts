@@ -15,6 +15,7 @@ import { CaptalizeFirstPipe } from './pipes/captalize-first.pipe';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { PacienteCadastroComponent } from './pages/paciente-cadastro/paciente-cadastro.component';
+import { ConsultaCadastroComponent } from './pages/consulta-cadastro/consulta-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PacienteCadastroComponent } from './pages/paciente-cadastro/paciente-ca
     CaptalizeFirstPipe,
     ToolbarComponent,
     SideMenuComponent,
-    PacienteCadastroComponent
+    PacienteCadastroComponent,
+    ConsultaCadastroComponent
   ],
   imports: [
     BrowserModule,
