@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'labM-exame-cadastro',
   templateUrl: './exame-cadastro.component.html',
   styleUrls: ['./exame-cadastro.component.css']
 })
-export class ExameCadastroComponent {
+export class ExameCadastroComponent implements DoCheck{
   date: any = new Date()
   exame: String = ""
   dataExame: String = ""
@@ -17,5 +17,7 @@ export class ExameCadastroComponent {
   onSubmit(form: any) {
 
   }
-
+  ngDoCheck(): void {
+    this.horaExame = `${this.date.getHours()}:${this.date.getMinutes()}`
+  }
 }

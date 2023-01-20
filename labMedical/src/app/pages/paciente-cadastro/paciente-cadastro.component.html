@@ -1,5 +1,7 @@
 <form #cadastroPaciente="ngForm" (ngSubmit)="onSubmit(cadastroPaciente)" class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
+        <h5>Identificação</h5>
+
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="nome" class="form-label">Nome</label>
@@ -8,7 +10,7 @@
                 <div *ngIf="inputNome.errors?.['required']&&inputNome.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputNome.errors?.['minlength']&&inputNome.touched" class="alert alert-danger">
-                    Mínimo de 8 letras</div>
+                    Mínimo de 8 caracteres</div>
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="genero" class="form-label">Gênero</label>
@@ -17,21 +19,27 @@
                     <option value="m">Masculino</option>
                     <option value="f">Feminino</option>
                 </select>
+                <div *ngIf="inputGenero.errors?.['required']&&inputGenero.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
                 <!-- ngClass para erro -->
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="dataNascimento" class="form-label">Data de Nascimento</label>
                 <input #inputNascimento="ngModel" type="date" class="form-control" name="nascimento"
                     [(ngModel)]="dataNascimento" required>
+                <div *ngIf="inputNascimento.errors?.['required']&&inputNascimento.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
             </div>
         </div>
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="cpf" class="form-label">CPF</label>
                 <input #inputCpf="ngModel" type="text" class="form-control" name="cpf" [(ngModel)]="cpf"
-                    placeholder="000.000.000-00" required>
+                    placeholder="000.000.000-00" pattern="[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}" required>
                 <div *ngIf="inputCpf.errors?.['required']&&inputCpf.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
+                <div *ngIf="inputCpf.errors?.['pattern']&&inputCpf.touched" class="alert alert-danger">
+                    Formato Inválido</div>
             </div>
             <!-- validação de CPF -->
             <div class="d-flex flex-column flex-grow-1">
@@ -42,7 +50,8 @@
                     <input #inputOrgExpedidor="ngModel" type="text" class="form-control" name="orgEx"
                         [(ngModel)]="orgEx" required placeholder="SSP-SP">
                 </div>
-                <div *ngIf="inputRg.errors?.['required']&&inputRg.touched" class="alert alert-danger">
+                <div *ngIf="inputRg.errors?.['required']&&inputRg.touched||inputOrgExpedidor.errors?.['required']&&inputOrgExpedidor.touched"
+                    class="alert alert-danger">
                     Campo Obrigatório</div>
             </div>
             <div class="d-flex flex-column flex-grow-1">
@@ -50,22 +59,26 @@
                 <select required #inputEstadoCivil="ngModel" class="form-select" name="estadoCivil"
                     [(ngModel)]="estadoCivil">
                     <option value="">Escolha</option>
-                    <option value="solteiro">Solteir(o/a)</option>
-                    <option value="casado">Casad(o/a)</option>
-                    <option value="separado">Separad(o/a)</option>
-                    <option value="divorciado">Divorciad(o/a)</option>
-                    <option value="viuvo">Viuv(o/a)</option>
+                    <option value="solteiro">Solteiro(a)</option>
+                    <option value="casado">Casado(a)</option>
+                    <option value="separado">Separado(a)</option>
+                    <option value="divorciado">Divorciado(a)</option>
+                    <option value="viuvo">Viuvo(a)</option>
                 </select>
+                <div *ngIf="inputEstadoCivil.errors?.['required']&&inputEstadoCivil.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
                 <!-- ngClass para erro -->
             </div>
 
         </div>
+        <h5>Contato</h5>
+
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1 ">
                 <label for="Telefone" class="form-label">Telefone</label>
                 <input #inputTelefone="ngModel" type="tel" class="form-control" name="telefone" [(ngModel)]="telefone"
-                    required pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}[0-9]?$"
-                    placeholder="(99)99999-9999">
+                    required pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9? ?[1-9])[0-9]{3}\-?[0-9]{4}[0-9]?$"
+                    placeholder="(99) 9 9999-99999">
                 <div *ngIf="inputTelefone.errors?.['required']&&inputTelefone.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputTelefone.errors?.['pattern']&&inputTelefone.touched" class="alert alert-danger">
@@ -87,34 +100,23 @@
                     Campo Obrigatório</div>
                 <div *ngIf="inputNaturalidade.errors?.['minlength']&&inputNaturalidade.touched"
                     class="alert alert-danger">
-                    Mínimo de 8 letras</div>
+                    Mínimo de 8 caracteres</div>
             </div>
         </div>
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1 ">
                 <label for="contato" class="form-label">Contato para Emergência</label>
                 <input #inputContato="ngModel" type="tel" class="form-control" name="contato" [(ngModel)]="contato"
-                    required pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}[0-9]?$"
-                    placeholder="(99)99999-9999">
+                    required pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9? ?[1-9])[0-9]{3}\-?[0-9]{4}[0-9]?$"
+                    placeholder="(99) 9 9999-99999">
                 <div *ngIf="inputContato.errors?.['required']&&inputContato.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputContato.errors?.['pattern']&&inputContato.touched" class="alert alert-danger">
                     Formato Incorreto, símbolos são opcionais</div>
             </div>
         </div>
-        <div class="mb-3 form-group d-flex gap-3">
-            <div class="flex-grow-1">
-                <label class="form-label" for="alergias">Alergias</label>
-                <textarea class="form-control" style="resize:none; height:7rem" placeholder="Liste as alergias"
-                    name="alergias"></textarea>
-            </div>
-            <div class="flex-grow-1" style="resize:disable">
-                <label class="form-label" for="cuidados">Cuidados Especiais</label>
-                <textarea class="form-control" style="resize:none; height:7rem"
-                    placeholder="Descreva os cuidados necessários" name="cuidados"></textarea>
-            </div>
-            <!-- ngModel typescript -->
-        </div>
+        <h5>Convênio</h5>
+
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="convenio" class="form-label">Convênio</label>
@@ -124,7 +126,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="convenioNumero" class="form-label">Número do Convênio</label>
                 <input #inputConvenio="ngModel" type="number" class="form-control" name="convenioNumero"
-                    [(ngModel)]="convenioNumero" placeholder="Número do Convênio">
+                    [(ngModel)]="convenioNumero" placeholder="00">
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="convenioValidade" class="form-label">Validade do Convênio</label>
@@ -132,6 +134,34 @@
                     [(ngModel)]="convenioValidade" placeholder="Validade do Convênio">
             </div>
         </div>
+        <h5>Cuidados Específicos</h5>
+
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="flex-grow-1">
+                <label class="form-label" for="alergias">Alergias</label>
+                <textarea class="form-control" style="resize:none; height:7rem" placeholder="Liste as alergias"
+                    name="alergias" [ngModel]="alergias"></textarea>
+            </div>
+            <div class="flex-grow-1" style="resize:disable">
+                <label class="form-label" for="cuidados">Cuidados Especiais</label>
+                <textarea class="form-control" style="resize:none; height:7rem"
+                    placeholder="Descreva os cuidados necessários" name="cuidados" [ngModel]="cuidados"></textarea>
+            </div>
+            <!-- ngModel typescript -->
+        </div>
+        <h5>Endereço</h5>
+        <div class="mb-3 form-group d-flex gap-3">
+            <!-- buscar JSON do viaCEP e montar campos por ngFor -->
+            
+            <!-- <div class="d-flex flex-column flex-grow-1">
+                <label for="" class="form-label"></label>
+                <input #input="ngModel" type="text" class="form-control" name="" [(ngModel)]="" required
+                    placeholder="Informe o">
+                <div *ngIf="input.errors?.['required']&&input.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+            </div> -->
+        </div>
+
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary" [disabled]="!cadastroPaciente.valid">Confirmar</button>
             <button type="reset" class="btn btn-primary">Limpar</button>

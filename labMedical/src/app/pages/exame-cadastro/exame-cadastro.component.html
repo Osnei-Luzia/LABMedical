@@ -4,11 +4,11 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="exame" class="form-label">Exame</label>
                 <input #inputExame="ngModel" type="text" class="form-control" name="exame" [(ngModel)]="exame" required
-                    maxlength="64" minlength="8" placeholder="Digite seu Exame">
+                    maxlength="64" minlength="8" placeholder="Informe o Exame">
                 <div *ngIf="inputExame.errors?.['required']&&inputExame.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputExame.errors?.['minlength']&&inputExame.touched" class="alert alert-danger">
-                    Mínimo de 8 letras</div>
+                    Mínimo de 8 caracteres</div>
             </div>
             <div class="d-flex flex-column flex-grow-2">
                 <label for="dataExame" class="form-label">Data de Consulta</label>
@@ -33,7 +33,7 @@
                 <div *ngIf="inputTipo.errors?.['required']&&inputTipo.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputTipo.errors?.['minlength']&&inputTipo.touched" class="alert alert-danger">
-                    Mínimo de 4 letras</div>
+                    Mínimo de 4 caracteres</div>
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="laboratorio" class="form-label">Laboratório</label>
@@ -55,9 +55,9 @@
         </div>
         <div class="mb-3 form-group d-flex gap-3">
             <div class="flex-grow-1">
-                <label class="form-label" for="resultado">Medicação Receitada</label>
+                <label class="form-label" for="resultado">Resultados</label>
                 <textarea #inputResultado="ngModel" class="form-control" style="resize:none; height:10rem"
-                    placeholder="Resultados" name="resultado" [ngModel]="resultado" maxlength="1024"
+                    placeholder="Resultados" name="resultado" [ngModel]="resultado" required maxlength="1024"
                     minlength="16"></textarea>
                 <div *ngIf="inputResultado.errors?.['required']&&inputResultado.touched" class="alert alert-danger">
                     Campo Obrigatório</div>

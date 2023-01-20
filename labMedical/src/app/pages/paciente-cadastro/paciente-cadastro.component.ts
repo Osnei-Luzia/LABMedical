@@ -22,6 +22,8 @@ export class PacienteCadastroComponent {
   convenio: String = ""
   convenioNumero: String = ""
   convenioValidade: String = ""
+
+  //fazer objeto para endereço
   
   onSubmit(form: any) {
     console.log(form)
