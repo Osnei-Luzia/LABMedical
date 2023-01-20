@@ -16,6 +16,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { PacienteCadastroComponent } from './pages/paciente-cadastro/paciente-cadastro.component';
 import { ConsultaCadastroComponent } from './pages/consulta-cadastro/consulta-cadastro.component';
+import { ExameCadastroComponent } from './pages/exame-cadastro/exame-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ConsultaCadastroComponent } from './pages/consulta-cadastro/consulta-ca
     ToolbarComponent,
     SideMenuComponent,
     PacienteCadastroComponent,
-    ConsultaCadastroComponent
+    ConsultaCadastroComponent,
+    ExameCadastroComponent
   ],
   imports: [
     BrowserModule,

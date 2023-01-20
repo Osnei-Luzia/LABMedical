@@ -1,0 +1,73 @@
+<form #cadastroExame="ngForm" (ngSubmit)="onSubmit(cadastroExame)" class="container p-3 mt-3 border">
+    <div class="d-flex flex-column justify-content-center ">
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="exame" class="form-label">Exame</label>
+                <input #inputExame="ngModel" type="text" class="form-control" name="exame" [(ngModel)]="exame" required
+                    maxlength="64" minlength="8" placeholder="Digite seu Exame">
+                <div *ngIf="inputExame.errors?.['required']&&inputExame.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputExame.errors?.['minlength']&&inputExame.touched" class="alert alert-danger">
+                    Mínimo de 8 letras</div>
+            </div>
+            <div class="d-flex flex-column flex-grow-2">
+                <label for="dataExame" class="form-label">Data de Consulta</label>
+                <input #inputData="ngModel" type="date" [placeholder]="dataExame" class="form-control" name="dataExame"
+                    [(ngModel)]="dataExame" required>
+                <div *ngIf="inputData.errors?.['required']&&inputData.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+            </div>
+            <div class="d-flex flex-column flex-grow-2">
+                <label for="horaExame" class="form-label">Hora de Consulta</label>
+                <input #inputHora="ngModel" type="time" class="form-control text-center" name="horaExame"
+                    [(ngModel)]="horaExame" required>
+                <div *ngIf="inputHora.errors?.['required']&&inputHora.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="tipo" class="form-label">Tipo de Exame</label>
+                <input #inputTipo="ngModel" type="text" class="form-control" name="Tipo" [(ngModel)]="tipo" required
+                    maxlength="32" minlength="4" placeholder="Imagem, Laboratorial">
+                <div *ngIf="inputTipo.errors?.['required']&&inputTipo.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputTipo.errors?.['minlength']&&inputTipo.touched" class="alert alert-danger">
+                    Mínimo de 4 letras</div>
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="laboratorio" class="form-label">Laboratório</label>
+                <input #inputLaboratorio="ngModel" type="text" class="form-control" name="laboratorio"
+                    [(ngModel)]="laboratorio" required maxlength="32" minlength="4" placeholder="Nome do Laboratório">
+                <div *ngIf="inputLaboratorio.errors?.['required']&&inputLaboratorio.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputLaboratorio.errors?.['minlength']&&inputLaboratorio.touched"
+                    class="alert alert-danger">
+                    Mínimo de 4 letras</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="url" class="form-label">URL de Exame</label>
+                <input #inputUrl="ngModel" type="text" class="form-control" name="url" [(ngModel)]="url" required
+                    placeholder="www.example.com/example.pdf">
+            </div>
+        </div>
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="flex-grow-1">
+                <label class="form-label" for="resultado">Medicação Receitada</label>
+                <textarea #inputResultado="ngModel" class="form-control" style="resize:none; height:10rem"
+                    placeholder="Resultados" name="resultado" [ngModel]="resultado" maxlength="1024"
+                    minlength="16"></textarea>
+                <div *ngIf="inputResultado.errors?.['required']&&inputResultado.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputResultado.errors?.['minlength']&&inputResultado.touched" class="alert alert-danger">
+                    Mínimo de 16 letras</div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" [disabled]="!cadastroExame.valid">Confirmar</button>
+            <button type="reset" class="btn btn-primary">Limpar</button>
+        </div>
+    </div>
+</form>
