@@ -8,7 +8,7 @@
                 <div *ngIf="inputMotivo.errors?.['required']&&inputMotivo.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputMotivo.errors?.['minlength']&&inputMotivo.touched" class="alert alert-danger">
-                    Mínimo de 8 letras</div>
+                    Mínimo de 8 caracteres</div>
             </div>
             <div class="d-flex flex-column flex-grow-2">
                 <label for="dataConsulta" class="form-label">Data de Consulta</label>
@@ -34,7 +34,7 @@
                 <div *ngIf="inputDescricao.errors?.['required']&&inputDescricao.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputDescricao.errors?.['minlength']&&inputDescricao.touched" class="alert alert-danger">
-                    Mínimo de 16 letras</div>
+                    Mínimo de 16 caracteres</div>
             </div>
         </div>
         <div class="mb-3 form-group d-flex gap-3">
@@ -46,11 +46,11 @@
                 <div *ngIf="inputMedicacao.errors?.['required']&&inputMedicacao.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputMedicacao.errors?.['minlength']&&inputMedicacao.touched" class="alert alert-danger">
-                    Mínimo de 16 letras</div>
+                    Mínimo de 16 caracteres</div>
             </div>
         </div>
         <div class="mb-3 form-group d-flex gap-3">
-            <div class="flex-grow-1">
+           <div class="flex-grow-1">
                 <label class="form-label" for="precaucoes">Dosagem Receitada</label>
                 <textarea #inputPrecaucoes="ngModel" class="form-control" style="resize:none; height:7rem"
                     placeholder="Dosagem e Precauções" name="precaucoes" required [ngModel]="precaucoes"
@@ -58,7 +58,7 @@
                 <div *ngIf="inputPrecaucoes.errors?.['required']&&inputPrecaucoes.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputPrecaucoes.errors?.['minlength']&&inputPrecaucoes.touched" class="alert alert-danger">
-                    Mínimo de 16 letras</div>
+                    Mínimo de 16 caracteres</div>
             </div>
         </div>
         <div class="d-flex justify-content-between">

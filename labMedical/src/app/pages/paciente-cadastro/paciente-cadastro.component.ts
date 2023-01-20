@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Paciente } from 'src/app/models/paciente';
+import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 
 @Component({
   selector: 'labM-paciente-cadastro',
@@ -24,9 +26,32 @@ export class PacienteCadastroComponent {
   convenioValidade: String = ""
 
   //fazer objeto para endereço
-  
+
   onSubmit(form: any) {
-    console.log(form)
+    if (form.valid) {
+      let paciente: Paciente = {
+        id: "",
+        nome: this.nome,
+        genero: this.genero,
+        dataNascimento: this.dataNascimento,
+        cpf: this.cpf,
+        rg: this.rg,
+        orgEx: this.orgEx,
+        estadoCivil: this.estadoCivil,
+        telefone: this.telefone,
+        email: this.email,
+        naturalidade: this.naturalidade,
+        contato: this.contato,
+        alergias: this.alergias,
+        cuidados: this.cuidados,
+        convenio: this.convenio,
+        convenioNumero: this.convenioNumero,
+        convenioValidade: this.convenioValidade,
+      }
+      TabelaPacienteService.prototype.cadastrar(paciente)
+      console.log(TabelaPacienteService.prototype.buscar())
+      form.reset()
+    }
 
   }
 
