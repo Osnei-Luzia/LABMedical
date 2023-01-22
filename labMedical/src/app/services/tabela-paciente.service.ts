@@ -6,10 +6,11 @@ import { Paciente } from '../models/paciente';
 })
 export class TabelaPacienteService {
   cadastrar(data: Paciente) {
-    data.id = crypto.randomUUID()
+    data.id ? "" : data.id = crypto.randomUUID();
+
     Object.keys(data).forEach(element => {
-      element===null?
-      element="":""
+      element === null ?
+        element = "" : ""
     });
     localStorage.setItem(`paciente_${data.id}`, JSON.stringify(data))
   }
@@ -21,6 +22,11 @@ export class TabelaPacienteService {
       storage[Index] = JSON.parse(storage[Index])
     })
     return storage
+  }
+  deletar(id:String){
+    let resultados = this.buscar()
+    let resultado = resultados.find((item) => item.id.includes(id))
+    localStorage.removeItem(`paciente_${resultado.id}`)
   }
   constructor() { }
 }

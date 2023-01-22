@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'labM-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit{
-  ngOnInit(): void {
-    
+export class MainComponent implements OnInit {
+   ngOnInit(): void {
+
   }
 }

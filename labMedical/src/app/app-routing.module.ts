@@ -16,10 +16,12 @@ const routes: Routes = [
     path: "home", component: MainComponent,
     children: [
       {
-        path: "inicio", component: InicioComponent
+        path: "inicio", component: InicioComponent,
       }, {
-        path: "paciente", component: PacienteCadastroComponent,
+        path: 'paciente', component: PacienteCadastroComponent,
       }, {
+        path: 'paciente/:id', component: PacienteCadastroComponent,
+      },{
         path: "consulta", component: ConsultaCadastroComponent,
       }, {
         path: "exame", component: ExameCadastroComponent

@@ -1,7 +1,7 @@
-<form #cadastroPaciente="ngForm" (ngSubmit)="onSubmit(cadastroPaciente)" class="container p-3 mt-3 border">
+<form #cadastroPaciente="ngForm" (ngSubmit)="onSubmit(cadastroPaciente,$event.submitter.id)" class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
         <!-- mostar nome no editar -->
-        <h3 hidden class="text-center mb-3">Paciente</h3>
+        <h3 class="text-center mb-3">Paciente</h3>
         <h5>Identificação</h5>
 
         <section class="mb-3 form-group d-flex gap-3">
@@ -204,9 +204,9 @@
         </section>
         <div class="d-flex justify-content-between">
             <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-primary" [disabled]="!cadastroPaciente.valid">Confirmar</button>
-                <button type="button" class="btn btn-primary" [disabled]="">Editar</button>
-                <button type="button" class="btn btn-primary" [disabled]="">Deletar</button>
+                <button id="adicionar" type="submit" class="btn btn-primary" [disabled]="cadastroPaciente.valid&&controle=='adicionar'?false:true">Adicionar</button>
+                <button id="editar" type="submit" class="btn btn-primary" [disabled]="!cadastroPaciente.valid||controle!='editar'">Editar</button>
+                <button id="deletar" type="submit" class="btn btn-primary" [disabled]="controle!='editar'">Deletar</button>
             </div>
             <button type="reset" class="btn btn-primary">Limpar</button>
         </div>
