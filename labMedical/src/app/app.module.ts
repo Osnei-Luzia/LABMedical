@@ -18,6 +18,7 @@ import { PacienteCadastroComponent } from './pages/paciente-cadastro/paciente-ca
 import { ConsultaCadastroComponent } from './pages/consulta-cadastro/consulta-cadastro.component';
 import { ExameCadastroComponent } from './pages/exame-cadastro/exame-cadastro.component';
 import { PacienteCardComponent } from './components/paciente-card/paciente-card.component';
+import { PaginaNaoEncontradaComponent } from './pages/pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PacienteCardComponent } from './components/paciente-card/paciente-card.
     PacienteCadastroComponent,
     ConsultaCadastroComponent,
     ExameCadastroComponent,
-    PacienteCardComponent
+    PacienteCardComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     BrowserModule,

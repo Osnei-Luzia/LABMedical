@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
 import { TabelaUsuarioService } from 'src/app/services/tabela-usuario.service';
 
 @Component({
@@ -15,17 +16,18 @@ export class LoginFormComponent {
   }
   onSubmit() {
     const usuarios = TabelaUsuarioService.prototype.buscar()
-    let check: boolean = false
     usuarios.forEach((usuario) => {
       if (this.email == usuario.email) {
         if (this.senha == usuario.senha) {
-          check = true
+          this.route.navigateByUrl("/home/inicio")
           this.status = false
-          //talvez resetar form
         }
       } else {
         this.status = true
       }
     })
+  }
+  constructor(private route:Router){
+
   }
 }
