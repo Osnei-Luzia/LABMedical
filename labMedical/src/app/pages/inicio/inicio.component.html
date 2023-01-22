@@ -1,5 +1,5 @@
 <!-- estatísticas -->
-<div class="d-flex justify-content-around p-4">
+<div class="d-flex justify-content-around p-4 flex-wrap">
     <div *ngFor="let estatistica of estatisticas;" class="card" style="width: 12rem;">
         <img src={{estatistica.img}} class="card-img-top" alt="...">
         <div class="card-body row text-center">
@@ -10,14 +10,12 @@
 </div>
 <!-- busca de pacientes -->
 <div class="input-group p-4">
-    <input type="text" class="form-control" placeholder="Nome, Telefone ou E-mail" aria-label="Nome, Telefone ou E-mail"
-        aria-describedby="button-addon2">
-    <button class="btn btn-outline-primary" type="button" id="button-addon2">Procurar</button>
+    <button class="btn btn-outline-primary disabled" type="button" id="button-addon2">Pesquisar</button>
+    <input name="pesquisa" type="text" class="form-control" placeholder="Nome, Telefone ou E-mail" aria-label="Nome, Telefone ou E-mail"
+        aria-describedby="button-addon2" (keyup)="filtrar()" [(ngModel)]="pesquisa">
 </div>
 
 <!-- lista de pacientes -->
-<ul>
-    <li>
-        texto
-    </li>
+<ul class="d-flex justify-content-around p-4 flex-wrap">
+    <labM-paciente-card [paciente]="paciente" *ngFor="let paciente of pacientes"></labM-paciente-card>
 </ul>

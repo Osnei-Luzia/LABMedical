@@ -1,8 +1,10 @@
 <form #cadastroPaciente="ngForm" (ngSubmit)="onSubmit(cadastroPaciente)" class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
+        <!-- mostar nome no editar -->
+        <h3 hidden class="text-center mb-3">Paciente</h3>
         <h5>Identificação</h5>
 
-        <div class="mb-3 form-group d-flex gap-3">
+        <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="nome" class="form-label">Nome</label>
                 <input #inputNome="ngModel" type="text" class="form-control" name="nome" [(ngModel)]="nome" required
@@ -30,8 +32,8 @@
                 <div *ngIf="inputNascimento.errors?.['required']&&inputNascimento.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
             </div>
-        </div>
-        <div class="mb-3 form-group d-flex gap-3">
+        </section>
+        <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="cpf" class="form-label">CPF</label>
                 <input #inputCpf="ngModel" type="text" class="form-control" name="cpf" [(ngModel)]="cpf"
@@ -70,10 +72,10 @@
                 <!-- ngClass para erro -->
             </div>
 
-        </div>
-        <h5>Contato</h5>
+        </section>
+        <h5 class="mt-3">Contato</h5>
 
-        <div class="mb-3 form-group d-flex gap-3">
+        <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1 ">
                 <label for="Telefone" class="form-label">Telefone</label>
                 <input #inputTelefone="ngModel" type="tel" class="form-control" name="telefone" [(ngModel)]="telefone"
@@ -94,7 +96,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="naturalidade" class="form-label">Naturalidade</label>
                 <input #inputNaturalidade="ngModel" type="text" class="form-control" name="naturalidade"
-                    [(ngModel)]="naturalidade" required maxlength="64" minlength="8" placeholder="Brasileiro">
+                    [(ngModel)]="naturalidade" required maxlength="64" minlength="8" placeholder="Catarinense">
                 <div *ngIf="inputNaturalidade.errors?.['required']&&inputNaturalidade.touched"
                     class="alert alert-danger">
                     Campo Obrigatório</div>
@@ -102,8 +104,8 @@
                     class="alert alert-danger">
                     Mínimo de 8 caracteres</div>
             </div>
-        </div>
-        <div class="mb-3 form-group d-flex gap-3">
+        </section>
+        <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1 ">
                 <label for="contato" class="form-label">Contato para Emergência</label>
                 <input #inputContato="ngModel" type="tel" class="form-control" name="contato" [(ngModel)]="contato"
@@ -114,10 +116,10 @@
                 <div *ngIf="inputContato.errors?.['pattern']&&inputContato.touched" class="alert alert-danger">
                     Formato Incorreto, símbolos são opcionais</div>
             </div>
-        </div>
-        <h5>Convênio</h5>
+        </section>
+        <h5 class="mt-3">Convênio</h5>
 
-        <div class="mb-3 form-group d-flex gap-3">
+        <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="convenio" class="form-label">Convênio</label>
                 <input #inputConvenio="ngModel" type="text" class="form-control" name="convenio" [(ngModel)]="convenio"
@@ -133,15 +135,14 @@
                 <input #inputConvenio="ngModel" type="date" class="form-control" name="convenioValidade"
                     [(ngModel)]="convenioValidade" placeholder="Validade do Convênio">
             </div>
-        </div>
-        <h5>Cuidados Específicos</h5>
+        </section>
+        <h5 class="mt-3">Cuidados Específicos</h5>
 
-        <div class="mb-3 form-group d-flex gap-3">
+        <section class="mb-3 form-group d-flex gap-3">
             <div class="flex-grow-1">
                 <label class="form-label" for="alergias">Alergias</label>
                 <textarea #inputAlergias="ngModel" type="text" class="form-control" name="alergias"
-                    style="resize:none; height:7rem" [(ngModel)]="alergias"
-                    placeholder="Liste as alergias"></textarea>
+                    style="resize:none; height:7rem" [(ngModel)]="alergias" placeholder="Liste as alergias"></textarea>
             </div>
             <div class="flex-grow-1" style="resize:disable">
                 <label class="form-label" for="cuidados">Cuidados Especiais</label>
@@ -150,20 +151,57 @@
                     placeholder="Descreva os cuidados necessários"></textarea>
             </div>
             <!-- ngModel typescript -->
-        </div>
-        <h5>Endereço</h5>
-        <div class="mb-3 form-group d-flex gap-3">
-            <!-- buscar JSON do viaCEP e montar campos por ngFor -->
-
-            <!-- <div class="d-flex flex-column flex-grow-1">
-                <label for="" class="form-label"></label>
-                <input #input="ngModel" type="text" class="form-control" name="" [(ngModel)]="" required
-                    placeholder="Informe o">
-                <div *ngIf="input.errors?.['required']&&input.touched" class="alert alert-danger">
-                    Campo Obrigatório</div>
-            </div> -->
-        </div>
-
+        </section>
+        <h5 class="mt-3">Endereço</h5>
+        <section class="mb-3 form-group d-flex gap-3">
+            <div class="input-group">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2"
+                    (click)="buscarCep()">Buscar</button>
+                <input name="cep" type="text" class="form-control" placeholder="CEP" aria-label="CEP"
+                    aria-describedby="button-addon2" [(ngModel)]="cep">
+            </div>
+        </section>
+        <section class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input #inputCidade="ngModel" type="text" class="form-control" name="cidade"
+                    [(ngModel)]="cepCampos.cidade" placeholder="Cidade">
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="bairro" class="form-label">Bairro</label>
+                <input #inputBairro="ngModel" type="text" class="form-control" name="bairro"
+                    [(ngModel)]="cepCampos.bairro" placeholder="Bairro">
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="estado" class="form-label">UF</label>
+                <input #inputEstado="ngModel" type="text" class="form-control" name="estado"
+                    [(ngModel)]="cepCampos.estado" placeholder="Estado">
+            </div>
+        </section>
+        <section class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="rua" class="form-label">Logradouro</label>
+                <input #inputRua="ngModel" type="text" class="form-control" name="rua"
+                    [(ngModel)]="cepCampos.logradouro" placeholder="Rua, Praça, Viela">
+            </div>
+            <div class="d-flex flex-column flex-grow-3">
+                <label for="cepNumero" class="form-label">Número</label>
+                <input #inputCepNumero="ngModel" type="text" class="form-control" name="cepNumero"
+                    [(ngModel)]="cepCampos.numero" placeholder="000">
+            </div>
+        </section>
+        <section class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="complemento" class="form-label">Complemento</label>
+                <input #inputCep="ngModel" type="text" class="form-control" name="complemento"
+                    [(ngModel)]="cepCampos.complemento" placeholder="Apartamento 02">
+            </div>
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="pontoRef" class="form-label">Ponto de Referência</label>
+                <input #inputPontoRef="ngModel" type="text" class="form-control" name="pontoRef"
+                    [(ngModel)]="cepCampos.pontoRef" placeholder="Próximo de..., Casa Azul">
+            </div>
+        </section>
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary" [disabled]="!cadastroPaciente.valid">Confirmar</button>
             <button type="reset" class="btn btn-primary">Limpar</button>

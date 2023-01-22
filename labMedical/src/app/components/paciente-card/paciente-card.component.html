@@ -1,0 +1,14 @@
+<div class="card" style="width: 12rem;">
+    <div class="card-header text-center">
+        <img>
+        <label>{{paciente.nome}}</label>
+    </div>
+    <div class="card-body text-center">
+        <p>{{paciente.dataNascimento|idade}}</p>
+        <p>{{paciente.email?paciente.email:paciente.telefone}}</p> <!-- ngIf email else telefone -->
+        <p>{{paciente.convenio?paciente.convenio:"Sem Convênio"}}</p>
+    </div>
+    <div class="card-footer text-end">
+        <button class="btn btn-link">Info</button> <!-- cartão inteiro -->
+    </div>
+</div>

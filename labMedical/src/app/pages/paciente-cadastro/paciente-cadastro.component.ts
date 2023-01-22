@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Constants } from 'src/app/constants/constants';
 import { Paciente } from 'src/app/models/paciente';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 
@@ -24,6 +25,17 @@ export class PacienteCadastroComponent {
   convenio: String = ""
   convenioNumero: String = ""
   convenioValidade: String = ""
+  cep: String = ""
+  cepCampos: any = 
+  {
+    cidade: "",
+    estado: "",
+    logradouro: "",
+    complemento: "",
+    numero: "",
+    bairro: "",
+    pontoRef: "",
+  }
 
   //fazer objeto para endereço
 
@@ -47,11 +59,26 @@ export class PacienteCadastroComponent {
         convenio: this.convenio,
         convenioNumero: this.convenioNumero,
         convenioValidade: this.convenioValidade,
+        cep: this.cep,
+        cepCampos: this.cepCampos
       }
       TabelaPacienteService.prototype.cadastrar(paciente)
       form.reset()
     }
+  }
+  async buscarCep() {
+    try{
+      let resultadoCep: any = await fetch(new Constants(this.cep).VIACEP_API)
+      resultadoCep = await resultadoCep.json()
+      this.cepCampos.cidade = resultadoCep.localidade
+      this.cepCampos.estado = resultadoCep.uf
+      this.cepCampos.logradouro = resultadoCep.logradouro
+      this.cepCampos.complemento = resultadoCep.complemento
+      this.cepCampos.bairro = resultadoCep.bairro
 
+    }catch{
+      alert("Cep Inválido --fazer um catch melhor")
+    }
   }
 
   /*

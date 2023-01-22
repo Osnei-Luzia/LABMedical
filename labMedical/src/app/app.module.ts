@@ -11,12 +11,13 @@ import { MatchingPasswordDirective } from './directives/matching-password.direct
 import { AvailableEmailDirective } from './directives/available-email.directive';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MainComponent } from './pages/main/main.component';
-import { CaptalizeFirstPipe } from './pipes/captalize-first.pipe';
+import { idadePipe } from './pipes/idade-pipe.pipe';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { PacienteCadastroComponent } from './pages/paciente-cadastro/paciente-cadastro.component';
 import { ConsultaCadastroComponent } from './pages/consulta-cadastro/consulta-cadastro.component';
 import { ExameCadastroComponent } from './pages/exame-cadastro/exame-cadastro.component';
+import { PacienteCardComponent } from './components/paciente-card/paciente-card.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +29,13 @@ import { ExameCadastroComponent } from './pages/exame-cadastro/exame-cadastro.co
     AvailableEmailDirective,
     InicioComponent,
     MainComponent,
-    CaptalizeFirstPipe,
+    idadePipe,
     ToolbarComponent,
     SideMenuComponent,
     PacienteCadastroComponent,
     ConsultaCadastroComponent,
-    ExameCadastroComponent
+    ExameCadastroComponent,
+    PacienteCardComponent
   ],
   imports: [
     BrowserModule,
