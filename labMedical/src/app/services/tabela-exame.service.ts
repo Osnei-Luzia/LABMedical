@@ -7,6 +7,7 @@ import { Exame } from '../models/exame';
 export class TabelaExameService {
   cadastrar(data: Exame) {
     data.id = crypto.randomUUID()
+    // eliminar nulls
     localStorage.setItem(`exame_${data.id}`, JSON.stringify(data))
   }
   buscar() {

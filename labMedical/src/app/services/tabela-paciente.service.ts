@@ -7,8 +7,11 @@ import { Paciente } from '../models/paciente';
 export class TabelaPacienteService {
   cadastrar(data: Paciente) {
     data.id = crypto.randomUUID()
+    Object.keys(data).forEach(element => {
+      element===null?
+      element="":""
+    });
     localStorage.setItem(`paciente_${data.id}`, JSON.stringify(data))
-
   }
   buscar() {
     const chaves = Object.keys(localStorage).filter((items) => { return items.includes("paciente") })
