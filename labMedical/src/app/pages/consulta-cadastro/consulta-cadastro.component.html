@@ -1,0 +1,91 @@
+<div class="container">
+    <labM-barra-pesquisa (listaPacientes)="recebedorEvento($event)" data-bs-toggle="collapse"
+        data-bs-target="#listaPacientes"></labM-barra-pesquisa>
+    <ul *ngFor="let paciente of pacientes" class="collapse vertical-group" id="listaPacientes">
+        <li>
+            <button class="dropdown-item bg-light">{{paciente.nome}}</button>
+        </li>
+    </ul>
+</div>
+<form #cadastroConsulta="ngForm" (ngSubmit)="onSubmit(cadastroConsulta,$event.submitter.id)"
+    class="container p-3 mt-3 border">
+    <div class="d-flex flex-column justify-content-center">
+        <h3 class="text-center">Paciente</h3>
+        <hr>
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <!-- <input hidden required> -->
+                <label>{{idPaciente}}</label>
+
+                <label for="motivo" class="form-label">Motivo</label>
+                <input #inputMotivo="ngModel" type="text" class="form-control" name="motivo" [(ngModel)]="motivo"
+                    required maxlength="64" minlength="8" placeholder="Informe o motivo da consulta">
+                <div *ngIf="inputMotivo.errors?.['required']&&inputMotivo.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputMotivo.errors?.['minlength']&&inputMotivo.touched" class="alert alert-danger">
+                    Mínimo de 8 caracteres</div>
+            </div>
+            <div class="d-flex flex-column flex-grow-2">
+                <label for="dataConsulta" class="form-label">Data de Consulta</label>
+                <input #inputData="ngModel" type="date" [placeholder]="dataConsulta" class="form-control"
+                    name="dataConsulta" [(ngModel)]="dataConsulta" required>
+                <div *ngIf="inputData.errors?.['required']&&inputData.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+            </div>
+            <div class="d-flex flex-column flex-grow-2">
+                <label for="horaConsulta" class="form-label">Hora de Consulta</label>
+                <input #inputHora="ngModel" type="time" class="form-control text-center" name="horaConsulta"
+                    [(ngModel)]="horaConsulta" required>
+                <div *ngIf="inputHora.errors?.['required']&&inputHora.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea #inputDescricao="ngModel" type="text" class="form-control" name="descricao"
+                    style="resize:none; height:7rem" [(ngModel)]="descricao" placeholder="Descreva o problema" required
+                    minlength="16" maxlength="1024"></textarea>
+                <div *ngIf="inputDescricao.errors?.['required']&&inputDescricao.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputDescricao.errors?.['minlength']&&inputDescricao.touched" class="alert alert-danger">
+                    Mínimo de 16 caracteres</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="medicacao" class="form-label">Medicação Receitada</label>
+                <textarea #inputMedicacao="ngModel" type="text" class="form-control" name="medicacao"
+                    style="resize:none; height:7rem" [(ngModel)]="medicacao" placeholder="Receita"></textarea>
+                <div *ngIf="inputMedicacao.errors?.['required']&&inputMedicacao.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputMedicacao.errors?.['minlength']&&inputMedicacao.touched" class="alert alert-danger">
+                    Mínimo de 16 caracteres</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="precaucoes" class="form-label">Dosagem Receitada</label>
+                <textarea #inputPrecaucoes="ngModel" type="text" class="form-control" name="precaucoes"
+                    style="resize:none; height:7rem" [(ngModel)]="precaucoes" placeholder="Dosagem e Precauções"
+                    required maxlength="256 " minlength="16"></textarea>
+                <div *ngIf="inputPrecaucoes.errors?.['required']&&inputPrecaucoes.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputPrecaucoes.errors?.['minlength']&&inputPrecaucoes.touched" class="alert alert-danger">
+                    Mínimo de 16 caracteres</div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="d-flex gap-2">
+                <button id="adicionar" type="submit" class="btn btn-primary"
+                    [disabled]="cadastroConsulta.valid&&controle=='adicionar'?false:true">Adicionar</button>
+                <button id="editar" type="submit" class="btn btn-primary"
+                    [disabled]="!cadastroConsulta.valid||controle!='editar'">Editar</button>
+                <button id="deletar" type="submit" class="btn btn-primary"
+                    [disabled]="controle!='editar'">Deletar</button>
+            </div>
+
+            <button type="reset" class="btn btn-primary">Limpar</button>
+        </div>
+    </div>
+</form>
