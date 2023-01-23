@@ -1,5 +1,6 @@
 export interface Exame {
     id: String,
+    idPaciente: String,
     nomeExame: String,
     dataExame: String,
     horaExame: String,

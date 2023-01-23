@@ -6,8 +6,12 @@ import { Exame } from '../models/exame';
 })
 export class TabelaExameService {
   cadastrar(data: Exame) {
-    data.id = crypto.randomUUID()
-    // eliminar nulls
+    data.id ? "" : data.id = crypto.randomUUID();
+
+    Object.keys(data).forEach(element => {
+      element === null ?
+        element = "" : ""
+    });
     localStorage.setItem(`exame_${data.id}`, JSON.stringify(data))
   }
   buscar() {
@@ -18,6 +22,11 @@ export class TabelaExameService {
       storage[Index] = JSON.parse(storage[Index])
     })
     return storage
+  }
+  deletar(id: String) {
+    let resultados = this.buscar()
+    let resultado = resultados.find((item) => item.id.includes(id))
+    localStorage.removeItem(`exame_${resultado.id}`)
   }
   constructor() { }
 }

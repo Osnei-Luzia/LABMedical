@@ -1,5 +1,16 @@
+<div class="container">
+    <labM-barra-pesquisa (listaPacientes)="recebedorEvento($event)" data-bs-toggle="collapse"
+        data-bs-target="#listaPacientes"></labM-barra-pesquisa>
+    <ul *ngFor="let paciente of pacientes" class="collapse vertical-group" id="listaPacientes">
+        <li>
+            <button class="dropdown-item bg-light">{{paciente.nome}}</button>
+        </li>
+    </ul>
+</div>
 <form #cadastroExame="ngForm" (ngSubmit)="onSubmit(cadastroExame)" class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center ">
+        <h3 class="text-center">Paciente</h3>
+        <hr>
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="nomeExame" class="form-label">Exame</label>
