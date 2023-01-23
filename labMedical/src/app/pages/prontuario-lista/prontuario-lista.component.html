@@ -1,0 +1,5 @@
+<labM-barra-pesquisa (listaPacientes)="recebedorEvento($event)"></labM-barra-pesquisa>
+<!-- lista de pacientes -->
+<ul class="d-flex flex-column justify-content-around p-4">
+    <labM-paciente-card [paciente]="paciente" *ngFor="let paciente of pacientes"></labM-paciente-card>
+</ul>

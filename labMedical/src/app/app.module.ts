@@ -20,6 +20,7 @@ import { ExameCadastroComponent } from './pages/exame-cadastro/exame-cadastro.co
 import { PacienteCardComponent } from './components/paciente-card/paciente-card.component';
 import { PaginaNaoEncontradaComponent } from './pages/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { BarraPesquisaComponent } from './components/barra-pesquisa/barra-pesquisa.component';
+import { ProntuarioListaComponent } from './pages/prontuario-lista/prontuario-lista.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { BarraPesquisaComponent } from './components/barra-pesquisa/barra-pesqui
     ExameCadastroComponent,
     PacienteCardComponent,
     PaginaNaoEncontradaComponent,
-    BarraPesquisaComponent
+    BarraPesquisaComponent,
+    ProntuarioListaComponent
   ],
   imports: [
     BrowserModule,
