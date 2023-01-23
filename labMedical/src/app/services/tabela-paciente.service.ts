@@ -23,7 +23,7 @@ export class TabelaPacienteService {
     })
     return storage
   }
-  deletar(id:String){
+  deletar(id: String) {
     let resultados = this.buscar()
     let resultado = resultados.find((item) => item.id.includes(id))
     localStorage.removeItem(`paciente_${resultado.id}`)

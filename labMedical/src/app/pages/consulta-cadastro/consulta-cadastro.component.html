@@ -1,7 +1,22 @@
-<form #cadastroConsulta="ngForm" (ngSubmit)="onSubmit(cadastroConsulta)" class="container p-3 mt-3 border">
+<div class="container">
+    <labM-barra-pesquisa (listaPacientes)="recebedorEvento($event)" data-bs-toggle="collapse"
+        data-bs-target="#listaPacientes"></labM-barra-pesquisa>
+    <ul *ngFor="let paciente of pacientes" class="collapse vertical-group" id="listaPacientes">
+        <li>
+            <button class="dropdown-item bg-light">{{paciente.nome}}</button>
+        </li>
+    </ul>
+</div>
+<form #cadastroConsulta="ngForm" (ngSubmit)="onSubmit(cadastroConsulta,$event.submitter.id)"
+    class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
+        <h3 class="text-center">Paciente</h3>
+        <hr>
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
+                <!-- <input hidden required> -->
+                <label>{{idPaciente}}</label>
+
                 <label for="motivo" class="form-label">Motivo</label>
                 <input #inputMotivo="ngModel" type="text" class="form-control" name="motivo" [(ngModel)]="motivo"
                     required maxlength="64" minlength="8" placeholder="Informe o motivo da consulta">
@@ -61,7 +76,15 @@
             </div>
         </div>
         <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary" [disabled]="!cadastroConsulta.valid">Confirmar</button>
+            <div class="d-flex gap-2">
+                <button id="adicionar" type="submit" class="btn btn-primary"
+                    [disabled]="cadastroConsulta.valid&&controle=='adicionar'?false:true">Adicionar</button>
+                <button id="editar" type="submit" class="btn btn-primary"
+                    [disabled]="!cadastroConsulta.valid||controle!='editar'">Editar</button>
+                <button id="deletar" type="submit" class="btn btn-primary"
+                    [disabled]="controle!='editar'">Deletar</button>
+            </div>
+
             <button type="reset" class="btn btn-primary">Limpar</button>
         </div>
     </div>

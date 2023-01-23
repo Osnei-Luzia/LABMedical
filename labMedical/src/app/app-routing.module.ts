@@ -10,8 +10,8 @@ import { PaginaNaoEncontradaComponent } from './pages/pagina-nao-encontrada/pagi
 
 //ter mais de um routing.module?
 const routes: Routes = [
-  { path: "", component: LoginComponent},
-  { path: "login", component: LoginComponent},
+  { path: "", component: LoginComponent },
+  { path: "login", component: LoginComponent },
   {
     path: "home", component: MainComponent,
     children: [
@@ -21,16 +21,17 @@ const routes: Routes = [
         path: 'paciente', component: PacienteCadastroComponent,
       }, {
         path: 'paciente/:id', component: PacienteCadastroComponent,
-      },{
+      }, {
         path: "consulta", component: ConsultaCadastroComponent,
+      }, {
+        path: "consulta/:id", component: ConsultaCadastroComponent,
       }, {
         path: "exame", component: ExameCadastroComponent
       }
-    ]
+    ] //corrigir paths
   },
-  { path: '**', component: PaginaNaoEncontradaComponent }, 
+  { path: '**', component: PaginaNaoEncontradaComponent },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

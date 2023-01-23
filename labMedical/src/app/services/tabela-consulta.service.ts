@@ -6,8 +6,12 @@ import { Consulta } from '../models/consulta';
 })
 export class TabelaConsultaService {
   cadastrar(data: Consulta) {
-    data.id = crypto.randomUUID()
-    // eliminar nulls
+    data.id ? "" : data.id = crypto.randomUUID();
+
+    Object.keys(data).forEach(element => {
+      element === null ?
+        element = "" : ""
+    });
     localStorage.setItem(`consulta_${data.id}`, JSON.stringify(data))
   }
   buscar() {
@@ -18,6 +22,11 @@ export class TabelaConsultaService {
       storage[Index] = JSON.parse(storage[Index])
     })
     return storage
+  }
+  deletar(id: String) {
+    let resultados = this.buscar()
+    let resultado = resultados.find((item) => item.id.includes(id))
+    localStorage.removeItem(`consulta_${resultado.id}`)
   }
   constructor() { }
 }
