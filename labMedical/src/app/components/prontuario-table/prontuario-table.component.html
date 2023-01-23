@@ -1,0 +1,16 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Registro</th>
+            <th scope="col">Nome do Paciente</th>
+            <th scope="col">Convênio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let paciente of pacientes">
+            <th scope="row">{{paciente.id}}</th>
+            <td>{{paciente.nome}}</td>
+            <td>{{paciente.convenio?paciente.convenio:"Não Possui"}}</td>
+        </tr>
+    </tbody>
+</table>

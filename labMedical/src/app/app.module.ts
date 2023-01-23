@@ -21,6 +21,7 @@ import { PacienteCardComponent } from './components/paciente-card/paciente-card.
 import { PaginaNaoEncontradaComponent } from './pages/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { BarraPesquisaComponent } from './components/barra-pesquisa/barra-pesquisa.component';
 import { ProntuarioListaComponent } from './pages/prontuario-lista/prontuario-lista.component';
+import { ProntuarioTableComponent } from './components/prontuario-table/prontuario-table.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProntuarioListaComponent } from './pages/prontuario-lista/prontuario-li
     PacienteCardComponent,
     PaginaNaoEncontradaComponent,
     BarraPesquisaComponent,
-    ProntuarioListaComponent
+    ProntuarioListaComponent,
+    ProntuarioTableComponent
   ],
   imports: [
     BrowserModule,
