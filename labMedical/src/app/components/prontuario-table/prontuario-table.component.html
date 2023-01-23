@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table border">
     <thead>
         <tr>
             <th scope="col">Registro</th>
@@ -11,6 +11,7 @@
             <th scope="row">{{paciente.id}}</th>
             <td>{{paciente.nome}}</td>
             <td>{{paciente.convenio?paciente.convenio:"Não Possui"}}</td>
+            <button class="btn btn-outline-primary link" [routerLink]="['../prontuario',paciente.id]">Ver Mais</button>
         </tr>
     </tbody>
 </table>

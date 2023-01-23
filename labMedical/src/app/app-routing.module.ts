@@ -8,6 +8,7 @@ import { MainComponent } from './pages/main/main.component';
 import { PacienteCadastroComponent } from './pages/paciente-cadastro/paciente-cadastro.component';
 import { PaginaNaoEncontradaComponent } from './pages/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { ProntuarioListaComponent } from './pages/prontuario-lista/prontuario-lista.component';
+import { ProntuarioComponent } from './pages/prontuario/prontuario.component';
 
 //ter mais de um routing.module?
 const routes: Routes = [
@@ -30,6 +31,8 @@ const routes: Routes = [
         path: "exame", component: ExameCadastroComponent
       }, {
         path: "prontuarios", component: ProntuarioListaComponent
+      },{
+        path: "prontuario/:id", component: ProntuarioComponent
       }
     ] //corrigir paths
   },
