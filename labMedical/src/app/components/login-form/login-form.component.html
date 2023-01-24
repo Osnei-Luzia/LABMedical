@@ -5,9 +5,9 @@
     </div>
     <div class="mb-3">
         <label for="loginSenha" class="form-label">Senha</label>
-        <input type="password" class="form-control" name="loginSenha" [(ngModel)]="senha">
+        <input #inputSenha="ngModel" type="password" class="form-control" name="loginSenha" [(ngModel)]="senha">
     </div>
-    <div *ngIf="status" name="loginAlerts" class="alert alert-danger">Email e ou senha incorretos</div>
+    <div *ngIf="inputSenha.errors?.['required']||status" name="loginAlerts" class="alert alert-danger">Credenciais incorretas</div>
     <div class="row">
         <button type="submit" class="btn btn-primary mb-3">Entrar</button>
         <a class="text-center" (click)="placeHolderResetSenha()" href="">Esqueceu sua senha?</a>

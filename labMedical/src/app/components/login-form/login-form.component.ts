@@ -18,6 +18,7 @@ export class LoginFormComponent {
     const usuarios = TabelaUsuarioService.prototype.buscar()
     usuarios.forEach((usuario) => {
       if (this.email == usuario.email) {
+        this.status = true
         if (this.senha == usuario.senha) {
           this.route.navigateByUrl("/home/inicio")
           this.status = false
@@ -27,7 +28,7 @@ export class LoginFormComponent {
       }
     })
   }
-  constructor(private route:Router){
+  constructor(private route: Router) {
 
   }
 }
