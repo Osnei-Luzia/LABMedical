@@ -24,8 +24,10 @@ export class ProntuarioComponent implements OnInit {
 
     resultados = TabelaConsultaService.prototype.buscar()
     this.consultas = resultados.filter((item) => item.idPaciente.includes(this.id))
-
-    TabelaPacienteService.prototype.buscar()
+    //this.consultas = resultado.sort
+    
+    resultados = TabelaExameService.prototype.buscar()
+    this.exames = resultados.filter((item) => item.idPaciente.includes(this.id))
   }
   constructor(private activatedRoute: ActivatedRoute) {
 
