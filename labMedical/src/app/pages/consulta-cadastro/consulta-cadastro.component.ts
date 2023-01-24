@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Consulta } from 'src/app/models/consulta';
 import { TabelaConsultaService } from 'src/app/services/tabela-consulta.service';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'labM-consulta-cadastro',
   templateUrl: './consulta-cadastro.component.html',
   styleUrls: ['./consulta-cadastro.component.css']
 })
-export class ConsultaCadastroComponent{
+export class ConsultaCadastroComponent implements OnInit{
   date: Date = new Date()
   controle: String = "adicionar"
   pacientes: any = TabelaPacienteService.prototype.buscar()
-  
+  pacienteNome: String = ""
 
   id: any = ""
   idPaciente: any = ""
@@ -40,24 +41,24 @@ export class ConsultaCadastroComponent{
       form.reset()
     }
   }
-
-  //fazer com que o resultado da pesquisa adicione os campos no formulário, transformar o select em collapse
   ngOnInit(): void {
-    // let resultado: any
-    // this.id = "199c7d33-8ca5-4d42-8230-92788c96080a"
-    // if (this.id) {
-    //   let resultados = TabelaConsultaService.prototype.buscar()
-    //   resultado = resultados.find((item) => item.id.includes(this.id))
-    //   this.idPaciente = resultado.idPaciente
-    //   this.motivo = resultado.motivo
-    //   this.dataConsulta = resultado.dataConsulta
-    //   this.horaConsulta = resultado.horaConsulta
-    //   this.descricao = resultado.descricao
-    //   this.medicacao = resultado.medicacao
-    //   this.precaucoes = resultado.precaucoes
-    // } else {
-    //   this.controle = "adicionar"
-    // }
+    let resultado: any
+    this.id = this.activatedRoute.snapshot.paramMap.get("id")
+    if (this.id) {
+      let resultados = TabelaConsultaService.prototype.buscar()
+      resultado = resultados.find((item) => item.idPaciente.includes(this.id))
+      this.id = resultado.id
+      this.idPaciente = resultado.idPaciente
+      this.motivo = resultado.motivo
+      this.dataConsulta = resultado.dataConsulta
+      this.horaConsulta = resultado.horaConsulta
+      this.descricao = resultado.descricao
+      this.medicacao = resultado.medicacao
+      this.precaucoes = resultado.precaucoes
+      this.controle = "editar"
+    } else {
+      this.controle = "adicionar"
+    }
   }
   recebedorEvento(pacientes: any) {
     this.pacientes = pacientes
@@ -84,5 +85,11 @@ export class ConsultaCadastroComponent{
     }
     return consulta
   }
-}
+  colocaId(id: any, nome: String) {
+    this.idPaciente = id
+    this.pacienteNome = nome
+  }
+  constructor(private activatedRoute: ActivatedRoute) {
 
+  }
+}

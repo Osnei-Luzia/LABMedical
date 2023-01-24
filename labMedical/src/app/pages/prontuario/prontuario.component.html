@@ -1,0 +1,55 @@
+<div class="container">
+    <div>
+        <h2>{{paciente?.nome}}</h2>
+        <h3>{{paciente?.convenio}}</h3>
+        <h4>{{paciente?.contato}}</h4>
+        <!-- adicionar campos de cuidados e alergias -->
+    </div>
+    <section>
+        <ng-template #templateConsulta> Sem Consultas</ng-template>
+        <table *ngIf="consultas?.length;else templateConsulta" class="table border">
+            <thead>
+                <tr>
+                    <th scope="col">Registro</th>
+                    <th scope="col">Motivo</th>
+                    <th scope="col">Medicação</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let consulta of consultas">
+                    <td>{{consulta.id}}</td>
+                    <td>{{consulta.motivo}}</td>
+                    <td>{{consulta.medicacao?consulta.medicacao:"Não Possui"}}</td>
+                    <td><button class="btn btn-outline-primary link"
+                            [routerLink]="['/home/consulta',consulta.idPaciente]">Ver
+                            Mais</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <section>
+        <ng-template #templateExame> Sem Exames</ng-template>
+        <table *ngIf="exames?.length; else templateExame" class="table border">
+            <thead>
+                <tr>
+                    <th scope="col">Registro</th>
+                    <th scope="col">Exame</th>
+                    <th scope="col">Tipo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let exame of exames">
+                    <td>{{exame.id}}</td>
+                    <td>{{exame.nomeExame}}</td>
+                    <td>{{exame.tipo}}</td>
+                    <td><button class="btn btn-outline-primary link"
+                            [routerLink]="['/home/exame',exame.idPaciente]">Ver
+                            Mais</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

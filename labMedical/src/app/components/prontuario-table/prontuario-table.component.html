@@ -1,16 +1,18 @@
-<table class="table">
+<table class="table border">
     <thead>
         <tr>
             <th scope="col">Registro</th>
             <th scope="col">Nome do Paciente</th>
             <th scope="col">Convênio</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let paciente of pacientes">
-            <th scope="row">{{paciente.id}}</th>
+            <td>{{paciente.id}}</td>
             <td>{{paciente.nome}}</td>
             <td>{{paciente.convenio?paciente.convenio:"Não Possui"}}</td>
+            <td><button class="btn btn-outline-primary link" [routerLink]="['../prontuario',paciente.id]">Ver Mais</button></td>
         </tr>
     </tbody>
 </table>

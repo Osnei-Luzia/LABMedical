@@ -3,14 +3,16 @@
         data-bs-target="#listaPacientes"></labM-barra-pesquisa>
     <ul *ngFor="let paciente of pacientes" class="collapse vertical-group" id="listaPacientes">
         <li>
-            <button class="dropdown-item bg-light">{{paciente.nome}}</button>
+            <button (click)="colocaId(paciente.id,paciente.nome)"
+                class="dropdown-item bg-light">{{paciente.nome}}</button>
         </li>
     </ul>
 </div>
-<form #cadastroExame="ngForm" (ngSubmit)="onSubmit(cadastroExame)" class="container p-3 mt-3 border">
+<form #cadastroExame="ngForm" (ngSubmit)="onSubmit(cadastroExame,$event.submitter.id)"
+    class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center ">
-        <h3 class="text-center">Paciente</h3>
-        <hr>
+        <h3 *ngIf="pacienteNome" class="text-center">{{pacienteNome}}</h3>
+        <hr *ngIf="pacienteNome">
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="nomeExame" class="form-label">Exame</label>
@@ -77,7 +79,14 @@
             </div>
         </div>
         <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary" [disabled]="!cadastroExame.valid">Confirmar</button>
+            <div class="d-flex gap-2">
+                <button id="adicionar" type="submit" class="btn btn-primary"
+                    [disabled]="cadastroExame.valid&&controle=='adicionar'?false:true">Adicionar</button>
+                <button id="editar" type="submit" class="btn btn-primary"
+                    [disabled]="!cadastroExame.valid||controle!='editar'">Editar</button>
+                <button id="deletar" type="submit" class="btn btn-primary"
+                    [disabled]="controle!='editar'">Deletar</button>
+            </div>
             <button type="reset" class="btn btn-primary">Limpar</button>
         </div>
     </div>

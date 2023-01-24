@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Exame } from 'src/app/models/exame';
 import { TabelaExameService } from 'src/app/services/tabela-exame.service';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'labM-exame-cadastro',
   templateUrl: './exame-cadastro.component.html',
   styleUrls: ['./exame-cadastro.component.css']
 })
-export class ExameCadastroComponent {
+export class ExameCadastroComponent implements OnInit {
   date: Date = new Date()
   controle: String = "adicionar"
   pacientes: any = TabelaPacienteService.prototype.buscar()
+  pacienteNome: String = ""
 
+  id: any = ""
   idPaciente: any = ""
   nomeExame: String = ""
   dataExame: String = ""
@@ -21,10 +24,40 @@ export class ExameCadastroComponent {
   laboratorio: String = ""
   url: String = ""
   resultados: String = ""
-  onSubmit(form: any) {
+  onSubmit(form: any, submitId: any) {
     if (form.valid) {
-      this.adicionar()
+      switch (submitId) {
+        case "adicionar":
+          this.adicionar()
+          break;
+        case "editar":
+          this.editar(this.id)
+          break;
+        case "deletar":
+          this.deletar(this.id)
+          break;
+      }
       form.reset()
+    }
+  }
+  ngOnInit(): void {
+    let resultado: any
+    this.id = this.activatedRoute.snapshot.paramMap.get("id")
+    if (this.id) {
+      let resultados = TabelaExameService.prototype.buscar()
+      resultado = resultados.find((item) => item.idPaciente.includes(this.id))
+      this.id = resultado.id
+      this.idPaciente = resultado.idPaciente
+      this.nomeExame = resultado.nomeExame
+      this.dataExame = resultado.dataExame
+      this.horaExame = resultado.horaExame
+      this.tipo = resultado.tipo
+      this.laboratorio = resultado.laboratorio
+      this.url = resultado.url
+      this.resultados = resultado.resultados
+      this.controle = "editar"
+    } else {
+      this.controle = "adicionar"
     }
   }
   recebedorEvento(pacientes: any) {
@@ -41,7 +74,7 @@ export class ExameCadastroComponent {
   }
   setExame(id?: String) {
     let exame: Exame = {
-      id: "",
+      id: id ? id : "",
       idPaciente: this.idPaciente,
       nomeExame: this.nomeExame,
       dataExame: this.dataExame,
@@ -49,9 +82,15 @@ export class ExameCadastroComponent {
       tipo: this.tipo,
       laboratorio: this.laboratorio,
       url: this.url,
-      //resultado: this.resultado,
       resultados: this.resultados
     }
     return exame
+  }
+  colocaId(id: any, nome: String) {
+    this.idPaciente = id
+    this.pacienteNome = nome
+  }
+  constructor(private activatedRoute: ActivatedRoute) {
+
   }
 }
