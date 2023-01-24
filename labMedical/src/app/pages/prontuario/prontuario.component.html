@@ -6,8 +6,28 @@
         <!-- adicionar campos de cuidados e alergias -->
     </div>
     <div>
-        {{consultas.idPaciente}}
+        <table *ngIf="consultas?.length" class="table border">
+            <thead>
+                <tr>
+                    <th scope="col">Registro</th>
+                    <th scope="col">Motivo</th>
+                    <th scope="col">Medicação</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let consulta of consultas">
+                    <td>{{consulta.id}}</td>
+                    <td>{{consulta.motivo}}</td>
+                    <td>{{consulta.medicacao?consulta.medicacao:"Não Possui"}}</td>
+                    <td><button class="btn btn-outline-primary link" [routerLink]="['/home/consulta',consulta.idPaciente]">Ver
+                            Mais</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
+
     <div>
         Exames
     </div>

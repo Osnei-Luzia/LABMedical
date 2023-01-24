@@ -3,20 +3,18 @@
         data-bs-target="#listaPacientes"></labM-barra-pesquisa>
     <ul *ngFor="let paciente of pacientes" class="collapse vertical-group" id="listaPacientes">
         <li>
-            <button class="dropdown-item bg-light">{{paciente.nome}}</button>
+            <button (click)="colocaId(paciente.id,paciente.nome)" class="dropdown-item bg-light">{{paciente.nome}}</button>
         </li>
     </ul>
 </div>
 <form #cadastroConsulta="ngForm" (ngSubmit)="onSubmit(cadastroConsulta,$event.submitter.id)"
     class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
-        <h3 class="text-center">Paciente</h3>
-        <hr>
+        <h3 *ngIf="pacienteNome" class="text-center">{{pacienteNome}}</h3>
+        <hr *ngIf="pacienteNome">
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
-                <!-- <input hidden required> -->
-                <label>{{idPaciente}}</label>
-
+                <input hidden required>
                 <label for="motivo" class="form-label">Motivo</label>
                 <input #inputMotivo="ngModel" type="text" class="form-control" name="motivo" [(ngModel)]="motivo"
                     required maxlength="64" minlength="8" placeholder="Informe o motivo da consulta">
