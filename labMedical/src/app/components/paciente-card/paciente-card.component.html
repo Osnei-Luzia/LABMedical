@@ -1,7 +1,7 @@
 <div class="card border border-primary"  style="width: 12rem;">
     <button [routerLink]="['../paciente',paciente.id]" class="btn btn-primary border border-primary card-header text-center">
         <img>
-        <label>{{paciente.nome}}</label>
+        <a>{{paciente.nome}}</a>
     </button>
     <div class="card-body text-center">
         <p>{{paciente.dataNascimento|idade}} Anos</p>
