@@ -3,6 +3,7 @@ import { Exame } from 'src/app/models/exame';
 import { TabelaExameService } from 'src/app/services/tabela-exame.service';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 import { ActivatedRoute } from '@angular/router';
+import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'labM-exame-cadastro',
@@ -18,8 +19,8 @@ export class ExameCadastroComponent implements OnInit {
   id: any = ""
   idPaciente: any = ""
   nomeExame: String = ""
-  dataExame: String = ""
-  horaExame: String = `${this.date.getHours()}:${this.date.getMinutes()}`
+  dataExame: String = DateService.prototype.dataAtual()
+  horaExame: String = DateService.prototype.horarioAtual()
   tipo: String = ""
   laboratorio: String = ""
   url: String = ""

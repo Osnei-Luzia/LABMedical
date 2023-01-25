@@ -17,25 +17,15 @@ const routes: Routes = [
   {
     path: "home", component: MainComponent,
     children: [
-      {
-        path: "inicio", component: InicioComponent,
-      }, {
-        path: 'paciente', component: PacienteCadastroComponent,
-      }, {
-        path: 'paciente/:id', component: PacienteCadastroComponent,
-      }, {
-        path: "consulta", component: ConsultaCadastroComponent,
-      }, {
-        path: "consulta/:id", component: ConsultaCadastroComponent,
-      }, {
-        path: "exame", component: ExameCadastroComponent
-      }, {
-        path: "exame/:id", component: ExameCadastroComponent
-      }, {
-        path: "prontuarios", component: ProntuarioListaComponent
-      }, {
-        path: "prontuario/:id", component: ProntuarioComponent
-      }
+      { path: "inicio", component: InicioComponent, },
+      { path: 'paciente', component: PacienteCadastroComponent, },
+      { path: 'paciente/:id', component: PacienteCadastroComponent, },
+      { path: "consulta", component: ConsultaCadastroComponent, },
+      { path: "consulta/:id", component: ConsultaCadastroComponent, },
+      { path: "exame", component: ExameCadastroComponent },
+      { path: "exame/:id", component: ExameCadastroComponent },
+      { path: "prontuarios", component: ProntuarioListaComponent },
+      { path: "prontuario/:id", component: ProntuarioComponent }
     ] //corrigir paths
   },
   { path: '**', component: PaginaNaoEncontradaComponent },

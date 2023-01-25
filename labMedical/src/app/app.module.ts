@@ -23,6 +23,7 @@ import { BarraPesquisaComponent } from './components/barra-pesquisa/barra-pesqui
 import { ProntuarioListaComponent } from './pages/prontuario-lista/prontuario-lista.component';
 import { ProntuarioTableComponent } from './components/prontuario-table/prontuario-table.component';
 import { ProntuarioComponent } from './pages/prontuario/prontuario.component';
+import { ModalAvisoComponent } from './components/modal-aviso/modal-aviso.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProntuarioComponent } from './pages/prontuario/prontuario.component';
     BarraPesquisaComponent,
     ProntuarioListaComponent,
     ProntuarioTableComponent,
-    ProntuarioComponent
+    ProntuarioComponent,
+    ModalAvisoComponent
   ],
   imports: [
     BrowserModule,

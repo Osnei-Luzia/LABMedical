@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Constants } from 'src/app/constants/constants';
 import { Paciente } from 'src/app/models/paciente';
+import { DateService } from 'src/app/services/date.service';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class PacienteCadastroComponent implements OnInit {
   id: any = ""
   nome: String = ""
   genero: String = ""
-  dataNascimento: String = ""
+  dataNascimento: String = "2000-01-01"
   cpf: String = ""
   rg: String = ""
   orgEx: String = ""
@@ -27,7 +28,7 @@ export class PacienteCadastroComponent implements OnInit {
   cuidados: String = ""
   convenio: String = ""
   convenioNumero: String = ""
-  convenioValidade: String = ""
+  convenioValidade: String = DateService.prototype.dataAtual()
   cep: String = ""
   cepCampos: any =
     {
@@ -75,7 +76,6 @@ export class PacienteCadastroComponent implements OnInit {
   }
   onSubmit(form: any, submitId: any) {
     if (form.valid) {
-
       switch (submitId) {
         case "adicionar":
           this.adicionar()
@@ -88,7 +88,8 @@ export class PacienteCadastroComponent implements OnInit {
           break;
       }
     }
-
+    //animaçao
+    this.controle = "adicionar"
     form.reset()
   }
   adicionar() {
