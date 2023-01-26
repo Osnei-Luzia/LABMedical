@@ -5,9 +5,11 @@
             <h4>{{paciente?.convenio?paciente?.convenio:"Sem Convênio"}}</h4>
             <h4>{{paciente?.contato}}</h4>
         </div>
-        <div>
-            <textarea>{{paciente?.alergias}}</textarea>
-            <textarea>{{paciente?.alergias}}</textarea>
+        <div class="d-flex flex-grow-1 flex-column align-items-end">
+            <h5>Alergias</h5>
+            <p>{{paciente?.alergias}}</p>
+            <h5>Necessidades Especiais</h5>
+            <p>{{paciente?.cuidados}}</p>
         </div>
     </section>
     <section class="mt-3">
