@@ -23,11 +23,13 @@ export class ProntuarioComponent implements OnInit {
     this.paciente = resultados.find((item) => item.id.includes(this.id))
 
     resultados = TabelaConsultaService.prototype.buscar()
-    this.consultas = resultados.filter((item) => item.idPaciente.includes(this.id))
-    //this.consultas = resultado.sort
+    resultados = resultados.filter((item) => item.idPaciente.includes(this.id))
+    this.consultas = resultados.sort((item)=>item.dataConsulta).reverse()
+    //this.consultas = resultado.sort por data
     
     resultados = TabelaExameService.prototype.buscar()
-    this.exames = resultados.filter((item) => item.idPaciente.includes(this.id))
+    resultados = resultados.filter((item) => item.idPaciente.includes(this.id))
+    this.exames = resultados.sort((item)=>item.dataExame).reverse()
   }
   constructor(private activatedRoute: ActivatedRoute) {
 

@@ -1,55 +1,78 @@
-<div class="container">
-    <div>
-        <h2>{{paciente?.nome}}</h2>
-        <h3>{{paciente?.convenio}}</h3>
-        <h4>{{paciente?.contato}}</h4>
-        <!-- adicionar campos de cuidados e alergias -->
-    </div>
-    <section>
-        <ng-template #templateConsulta> Sem Consultas</ng-template>
-        <table *ngIf="consultas?.length;else templateConsulta" class="table border">
-            <thead>
-                <tr>
-                    <th scope="col">Registro</th>
-                    <th scope="col">Motivo</th>
-                    <th scope="col">Medicação</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let consulta of consultas">
-                    <td>{{consulta.id}}</td>
-                    <td>{{consulta.motivo}}</td>
-                    <td>{{consulta.medicacao?consulta.medicacao:"Não Possui"}}</td>
-                    <td><button class="btn btn-outline-primary link"
-                            [routerLink]="['/home/consulta',consulta.idPaciente]">Ver
-                            Mais</button></td>
-                </tr>
-            </tbody>
-        </table>
+<div class="container mt-3">
+    <section class="bg-dark text-white p-3 d-flex gap-3">
+        <div>
+            <h2>{{paciente?.nome}}</h2>
+            <h4>{{paciente?.convenio?paciente?.convenio:"Sem Convênio"}}</h4>
+            <h4>{{paciente?.contato}}</h4>
+        </div>
+        <div>
+            <textarea>{{paciente?.alergias}}</textarea>
+            <textarea>{{paciente?.alergias}}</textarea>
+        </div>
     </section>
-    
+    <section class="mt-3">
+        <h1>Consultas</h1>
+        <ng-template #templateConsulta>
+            <h2>Sem Consultas cadastradas</h2>
+        </ng-template>
+        <div *ngIf="consultas?.length;else templateConsulta">
+            <div *ngFor="let consulta of consultas" class="mb-3 border border-dark">
+                <section class="d-flex border-bottom border-dark">
+                    <div class="badge bg-dark rounded-0 d-flex flex-column justify-content-center" style="min-width:10rem">
+                        <h5>Data e Hora</h5>
+                        <p>{{consulta.dataConsulta}}</p>
+                        <p>{{consulta.horaConsulta}}</p>
+                        <h5>Motivo</h5>
+                        <p>{{consulta.motivo}}</p>
+                    </div>
+
+                    <div class="d-flex flex-grow-1 ">
+                        <div class="p-2">
+                            <h4>Descrição</h4>
+                            <p class="text-wrap">{{consulta.descricao}}</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary rounded-0 link"
+                        [routerLink]="['/home/consulta',consulta.idPaciente]">Editar</button>
+                </section>
+                <section class="d-flex justify-content-between">
+                    <div class="p-2 flex-grow-1">
+                        <h5>Medicação</h5>
+                        <p>{{consulta.medicacao?consulta.medicacao:"Sem receita"}}</p>
+                    </div>
+                    <div class="p-2 flex-grow-1">
+                        <h5>Dosagem e Precauções</h5>
+                        <p>{{consulta.precaucoes}}</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
     <section>
-        <ng-template #templateExame> Sem Exames</ng-template>
-        <table *ngIf="exames?.length; else templateExame" class="table border">
-            <thead>
-                <tr>
-                    <th scope="col">Registro</th>
-                    <th scope="col">Exame</th>
-                    <th scope="col">Tipo</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let exame of exames">
-                    <td>{{exame.id}}</td>
-                    <td>{{exame.nomeExame}}</td>
-                    <td>{{exame.tipo}}</td>
-                    <td><button class="btn btn-outline-primary link"
-                            [routerLink]="['/home/exame',exame.idPaciente]">Ver
-                            Mais</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <h1>Exames</h1>
+        <ng-template #templateExame> Sem Exames cadastrados</ng-template>
+        <div *ngIf="exames?.length;else templateConsulta" class="border">
+            <div *ngFor="let exame of exames" class="mb-3 border border-dark">
+                <section class="d-flex border-dark">
+                    <div class="badge bg-dark rounded-0 d-flex flex-column justify-content-center" style="min-width:10rem">
+                        <h5>Data e Hora</h5>
+                        <p>{{exame.dataExame}}</p>
+                        <p>{{exame.horaExame}}</p>
+                        <h5>Nome</h5>
+                        <p>{{exame.nomeExame}}</p>
+                        <h5>Laboratório</h5>
+                        <p>{{exame.laboratorio}}</p>
+                        <p>{{exame.url}}</p>
+                    </div>
+                    <div class="d-flex flex-grow-1 ">
+                        <div class="p-2">
+                            <h4>Resultados</h4>
+                            <p class="text-wrap">{{exame.resultados}}</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </section>
 </div>

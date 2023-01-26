@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: "exame/:id", component: ExameCadastroComponent },
       { path: "prontuarios", component: ProntuarioListaComponent },
       { path: "prontuario/:id", component: ProntuarioComponent }
-    ] //corrigir paths
+    ]//corrigir paths
   },
   { path: '**', component: PaginaNaoEncontradaComponent },
 ];
