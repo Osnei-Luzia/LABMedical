@@ -43,14 +43,12 @@ export class PacienteCadastroComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {
 
   }
-  //fazer objeto para endereço
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get("id")
     let resultado: any
     if (this.id) {
       let resultados = TabelaPacienteService.prototype.buscar()
       resultado = resultados.find((item) => item.id.includes(this.id))
-      console.log(resultado)
       this.nome = resultado.nome,
         this.genero = resultado.genero,
         this.dataNascimento = resultado.dataNascimento,
@@ -88,7 +86,6 @@ export class PacienteCadastroComponent implements OnInit {
           break;
       }
     }
-    //animaçao
     this.controle = "adicionar"
     form.reset()
   }
@@ -138,7 +135,9 @@ export class PacienteCadastroComponent implements OnInit {
       alert("Cep Inválido --fazer um catch melhor")
     }
   }
-
+  formReset(){
+    this.controle = "adicionar"
+  }
   /*
   function TestaCPF(strCPF) {
       var Soma;

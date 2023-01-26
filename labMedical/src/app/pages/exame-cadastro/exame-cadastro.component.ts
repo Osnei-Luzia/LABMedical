@@ -38,6 +38,7 @@ export class ExameCadastroComponent implements OnInit {
           this.deletar(this.id)
           break;
       }
+      this.controle = "adicionar"
       form.reset()
     }
   }
@@ -90,6 +91,9 @@ export class ExameCadastroComponent implements OnInit {
   colocaId(id: any, nome: String) {
     this.idPaciente = id
     this.pacienteNome = nome
+  }
+  formReset(){
+    this.controle = "adicionar"
   }
   constructor(private activatedRoute: ActivatedRoute) {
 

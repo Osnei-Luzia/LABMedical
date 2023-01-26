@@ -1,10 +1,7 @@
-<form #cadastroPaciente="ngForm" (ngSubmit)="onSubmit(cadastroPaciente,$event.submitter.id)" class="container p-3 mt-3 border">
+<form #cadastroPaciente="ngForm" (ngSubmit)="onSubmit(cadastroPaciente,$event.submitter.id)"
+    class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
-        <!-- mostar nome no editar -->
-        <h3 class="text-center">Paciente</h3>
-        <hr>
         <h5>Identificação</h5>
-
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="nome" class="form-label">Nome</label>
@@ -24,7 +21,6 @@
                 </select>
                 <div *ngIf="inputGenero.errors?.['required']&&inputGenero.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
-                <!-- ngClass para erro -->
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="dataNascimento" class="form-label">Data de Nascimento</label>
@@ -44,7 +40,6 @@
                 <div *ngIf="inputCpf.errors?.['pattern']&&inputCpf.touched" class="alert alert-danger">
                     Formato Inválido</div>
             </div>
-            <!-- validação de CPF -->
             <div class="d-flex flex-column flex-grow-1">
                 <label for="rg" class="form-label">RG e Orgão Expedidor</label>
                 <div class="input-group">
@@ -70,7 +65,6 @@
                 </select>
                 <div *ngIf="inputEstadoCivil.errors?.['required']&&inputEstadoCivil.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
-                <!-- ngClass para erro -->
             </div>
 
         </section>
@@ -151,7 +145,6 @@
                     style="resize:none; height:7rem" [(ngModel)]="cuidados"
                     placeholder="Descreva os cuidados necessários"></textarea>
             </div>
-            <!-- ngModel typescript -->
         </section>
         <h5 class="mt-3">Endereço</h5>
         <section class="mb-3 form-group d-flex gap-3">
@@ -205,11 +198,14 @@
         </section>
         <div class="d-flex justify-content-between">
             <div class="d-flex gap-2">
-                <button id="adicionar" type="submit" class="btn btn-primary" [disabled]="cadastroPaciente.valid&&controle=='adicionar'?false:true">Adicionar</button>
-                <button id="editar" type="submit" class="btn btn-primary" [disabled]="!cadastroPaciente.valid||controle!='editar'">Editar</button>
-                <button id="deletar" type="submit" class="btn btn-primary" [disabled]="controle!='editar'">Deletar</button>
+                <button id="adicionar" type="submit" class="btn btn-primary"
+                    [disabled]="cadastroPaciente.valid&&controle=='adicionar'?false:true">Adicionar</button>
+                <button id="editar" type="submit" class="btn btn-primary"
+                    [disabled]="!cadastroPaciente.valid||controle!='editar'">Editar</button>
+                <button id="deletar" type="submit" class="btn btn-primary"
+                    [disabled]="controle!='editar'">Deletar</button>
             </div>
-            <button type="reset" class="btn btn-primary">Limpar</button>
+            <button type="reset" (click)="formReset()" class="btn btn-primary">Limpar</button>
         </div>
     </div>
 </form>
