@@ -1,9 +1,11 @@
 import { Directive, Input } from '@angular/core';
 import { NG_VALIDATORS, AbstractControl, Validator, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export function matchingPassword(senha:string): ValidatorFn {
+export function matchingPassword(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    if ((control.value != senha)) {
+    console.log(control.value)
+    console.log(control)
+    if ((control.value.senhaCadastro != control.value.senhaValida)) {
       return {
         matchingPassword: {
           valid: false,
@@ -29,6 +31,6 @@ export class MatchingPasswordDirective implements Validator {
   constructor() { }
 
   public validate(control: AbstractControl): ValidationErrors | null {
-    return matchingPassword(this.senha)(control);
+    return matchingPassword()(control);
   }
 }
