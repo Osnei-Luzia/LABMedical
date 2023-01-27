@@ -10,7 +10,7 @@ export class TabelaPacienteService {
   cadastrar(data: Paciente) {
     data.id ? "" : data.id = crypto.randomUUID();
 
-    Object.keys(data).forEach(element => {
+    Object.values(data).forEach(element => {
       element === null ?
         element = "" : ""
     });

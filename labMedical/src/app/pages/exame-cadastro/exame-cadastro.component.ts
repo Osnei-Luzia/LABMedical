@@ -47,7 +47,7 @@ export class ExameCadastroComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get("id")
     if (this.id) {
       let resultados = TabelaExameService.prototype.buscar()
-      resultado = resultados.find((item) => item.idPaciente.includes(this.id))
+      resultado = resultados.find((item) => item.id.includes(this.id))
       this.id = resultado.id
       this.idPaciente = resultado.idPaciente
       this.nomeExame = resultado.nomeExame

@@ -47,7 +47,7 @@ export class ConsultaCadastroComponent implements OnInit{
     this.id = this.activatedRoute.snapshot.paramMap.get("id")
     if (this.id) {
       let resultados = TabelaConsultaService.prototype.buscar()
-      resultado = resultados.find((item) => item.idPaciente.includes(this.id))
+      resultado = resultados.find((item) => item.id.includes(this.id))
       this.id = resultado.id
       this.idPaciente = resultado.idPaciente
       this.motivo = resultado.motivo
