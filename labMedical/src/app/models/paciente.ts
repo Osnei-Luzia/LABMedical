@@ -18,5 +18,5 @@ export interface Paciente {
     convenioValidade: String,
     cep: String,
     cepCampos: any,
-    //imagem: String
+    imagem: String
 }

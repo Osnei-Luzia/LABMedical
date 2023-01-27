@@ -10,7 +10,7 @@
             <p>
                 {{usuario.nome}}
             </p>
-            <img class="rounded-circle" style="width:3rem" src={{usuario.imagem}}>
+            <img class="rounded-circle" style="width:3rem" src="{{usuario.imagem?usuario.imagem:'../../../../../assets/image-placeholder.svg'}}">
         </div>
     </div>
 </nav>

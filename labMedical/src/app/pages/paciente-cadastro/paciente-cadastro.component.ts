@@ -13,24 +13,27 @@ import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service'
 export class PacienteCadastroComponent implements OnInit {
   controle: String = "adicionar"
   id: any = ""
-  nome: String = ""
-  genero: String = ""
-  dataNascimento: String = "2000-01-01"
-  cpf: String = ""
-  rg: String = ""
-  orgEx: String = ""
-  estadoCivil: String = ""
-  telefone: String = ""
-  email: String = ""
-  naturalidade: String = ""
-  contato: String = ""
-  alergias: String = ""
-  cuidados: String = ""
-  convenio: String = ""
-  convenioNumero: String = ""
-  convenioValidade: String = DateService.prototype.dataAtual()
-  cep: String = ""
-  cepCampos: any =
+
+  paciente: Paciente = {
+    id: "",
+    nome: "",
+    genero: "",
+    dataNascimento: "2000-01-01",
+    cpf: "",
+    rg: "",
+    orgEx: "",
+    estadoCivil: "",
+    telefone: "",
+    email: "",
+    naturalidade: "",
+    contato: "",
+    alergias: "",
+    cuidados: "",
+    convenio: "",
+    convenioNumero: "",
+    convenioValidade: DateService.prototype.dataAtual(),
+    cep: "",
+    cepCampos:
     {
       cidade: "",
       estado: "",
@@ -39,7 +42,10 @@ export class PacienteCadastroComponent implements OnInit {
       numero: "",
       bairro: "",
       pontoRef: "",
-    }
+    },
+    imagem: ""
+
+  }
   constructor(private activatedRoute: ActivatedRoute) {
 
   }
@@ -49,24 +55,7 @@ export class PacienteCadastroComponent implements OnInit {
     if (this.id) {
       let resultados = TabelaPacienteService.prototype.buscar()
       resultado = resultados.find((item) => item.id.includes(this.id))
-      this.nome = resultado.nome,
-        this.genero = resultado.genero,
-        this.dataNascimento = resultado.dataNascimento,
-        this.cpf = resultado.cpf,
-        this.rg = resultado.rg,
-        this.orgEx = resultado.orgEx,
-        this.estadoCivil = resultado.estadoCivil,
-        this.telefone = resultado.telefone,
-        this.email = resultado.email,
-        this.naturalidade = resultado.naturalidade,
-        this.contato = resultado.contato,
-        this.alergias = resultado.alergias,
-        this.cuidados = resultado.cuidados,
-        this.convenio = resultado.convenio,
-        this.convenioNumero = resultado.convenioNumero,
-        this.convenioValidade = resultado.convenioValidade,
-        this.cep = resultado.cep,
-        this.cepCampos = resultado.cepCampos
+      this.paciente = resultado
       this.controle = "editar"
     } else {
       this.controle = "adicionar"
@@ -90,52 +79,25 @@ export class PacienteCadastroComponent implements OnInit {
     form.reset()
   }
   adicionar() {
-    TabelaPacienteService.prototype.cadastrar(this.setPaciente())
+    TabelaPacienteService.prototype.cadastrar(this.paciente)
   }
   editar(id: String) {
-    TabelaPacienteService.prototype.cadastrar(this.setPaciente(id))
+    TabelaPacienteService.prototype.cadastrar(this.paciente)
   }
   deletar(id: String) {
     TabelaPacienteService.prototype.deletar(id)
   }
-  setPaciente(id?: String) {
-    let paciente: Paciente = {
-      id: id ? id : "",
-      nome: this.nome,
-      genero: this.genero,
-      dataNascimento: this.dataNascimento,
-      cpf: this.cpf,
-      rg: this.rg,
-      orgEx: this.orgEx,
-      estadoCivil: this.estadoCivil,
-      telefone: this.telefone,
-      email: this.email,
-      naturalidade: this.naturalidade,
-      contato: this.contato,
-      alergias: this.alergias,
-      cuidados: this.cuidados,
-      convenio: this.convenio,
-      convenioNumero: this.convenioNumero,
-      convenioValidade: this.convenioValidade,
-      cep: this.cep,
-      cepCampos: this.cepCampos
-    }
-    return paciente
-  }
+  
   async buscarCep() {
     try {
-      let resultadoCep: any = await fetch(new Constants(this.cep).VIACEP_API)
+      let resultadoCep: any = await fetch(new Constants(this.paciente.cep).VIACEP_API)
       resultadoCep = await resultadoCep.json()
-      this.cepCampos.cidade = resultadoCep.localidade
-      this.cepCampos.estado = resultadoCep.uf
-      this.cepCampos.logradouro = resultadoCep.logradouro
-      this.cepCampos.complemento = resultadoCep.complemento
-      this.cepCampos.bairro = resultadoCep.bairro
+      this.paciente.cepCampos = resultadoCep
     } catch {
       alert("Cep Inválido --fazer um catch melhor")
     }
   }
-  formReset(){
+  formReset() {
     this.controle = "adicionar"
   }
   /*

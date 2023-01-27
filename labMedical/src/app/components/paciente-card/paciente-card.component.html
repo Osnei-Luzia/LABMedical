@@ -1,7 +1,7 @@
 <div class="card border border-primary"  style="width: 12rem;">
-    <button [routerLink]="['../paciente',paciente.id]" class="btn btn-primary border border-primary card-header text-center">
+    <button [routerLink]="['../paciente',paciente.id]" class="btn btn-primary border border-primary card-header text-center d-flex flex-column align-items-center gap-1">
         <a>{{paciente.nome}}</a>
-        <!-- <img class="rounded-circle" style="width:3rem" src={{paciente.imagem}}> -->
+        <img class="rounded-circle" style="width:3rem" src="{{paciente.imagem?paciente.imagem:'../../../../../assets/image-placeholder.svg'}}">
     </button>
     <div class="card-body text-center">
         <p>{{paciente.dataNascimento|idade}} Anos</p>
