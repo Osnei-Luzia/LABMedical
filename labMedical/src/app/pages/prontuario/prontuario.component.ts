@@ -25,7 +25,6 @@ export class ProntuarioComponent implements OnInit {
     resultados = TabelaConsultaService.prototype.buscar()
     resultados = resultados.filter((item) => item.idPaciente.includes(this.id))
     this.consultas = resultados.sort((item)=>item.dataConsulta).reverse()
-    //this.consultas = resultado.sort por data
     
     resultados = TabelaExameService.prototype.buscar()
     resultados = resultados.filter((item) => item.idPaciente.includes(this.id))

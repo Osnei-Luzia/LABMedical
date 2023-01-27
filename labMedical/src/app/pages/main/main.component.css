@@ -1,0 +1,12 @@
+.sidebar{
+    height: 92.83vh;
+}
+.content-container{
+    height: 92.83vh;
+    position: relative;
+    width: 100%;
+}
+.content{
+    max-height: 100%;
+    overflow-y: scroll;
+}
