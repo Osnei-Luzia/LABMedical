@@ -10,6 +10,7 @@
 </div>
 <!-- busca de pacientes -->
 <labM-barra-pesquisa (listaPacientes)="recebedorEvento($event)"></labM-barra-pesquisa>
+
 <!-- lista de pacientes -->
 <ul class="d-flex justify-content-around p-4 flex-wrap gap-3">
     <labM-paciente-card [paciente]="paciente" *ngFor="let paciente of pacientes"></labM-paciente-card>
