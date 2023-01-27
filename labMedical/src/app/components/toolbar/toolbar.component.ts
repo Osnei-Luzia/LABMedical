@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResolveEnd, Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario';
+import { TabelaUsuarioService } from 'src/app/services/tabela-usuario.service';
 
 
 @Component({
@@ -7,14 +9,25 @@ import { ResolveEnd, Router } from '@angular/router';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css']
 })
-export class ToolbarComponent implements OnInit{
+export class ToolbarComponent implements OnInit {
   nomePagina: String | undefined
+  usuario: Usuario = {
+    id: "",
+    nome: "",
+    email: "",
+    imagem: "",
+    senha: "",
+    logado: ""
+  }
 
   ngOnInit(): void {
-  this.setNomePagina(this.rota.url)
-  }  
-  
-  setNomePagina(url:any): void {
+    this.setNomePagina(this.rota.url)
+    let resultados = TabelaUsuarioService.prototype.buscar()
+    let resultado = resultados.find((item) => item.logado)
+    this.usuario = resultado
+  }
+
+  setNomePagina(url: any): void {
     switch (url.split("/")[2]) {
       case "inicio":
         this.nomePagina = "Estatísticas"
@@ -34,8 +47,8 @@ export class ToolbarComponent implements OnInit{
     }
   }
   constructor(private rota: Router) {
-    rota.events.subscribe((event)=>{
-      if(event instanceof ResolveEnd){
+    rota.events.subscribe((event) => {
+      if (event instanceof ResolveEnd) {
         this.setNomePagina(event.url)
       }
     })

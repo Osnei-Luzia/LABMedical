@@ -1,17 +1,16 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <button class="btn navbar-toggler-icon" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sideMenu" aria-expanded="false" aria-controls="sideMenu">
-
+        <button class="btn navbar-toggler-icon" type="button" data-bs-toggle="collapse" data-bs-target="#sideMenu"
+            aria-expanded="false" aria-controls="sideMenu">
         </button>
         <p class="navbar-brand" href="#">
             {{nomePagina}}
         </p>
-        <div class="d-flex nav-text text-white">
+        <div class="d-flex nav-text text-white gap-3">
             <p>
-                Usuario
+                {{usuario.nome}}
             </p>
-            <img src="">
+            <img class="rounded-circle" style="width:3rem" src={{usuario.imagem}}>
         </div>
     </div>
 </nav>
