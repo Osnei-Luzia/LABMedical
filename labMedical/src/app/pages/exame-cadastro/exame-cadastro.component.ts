@@ -3,6 +3,7 @@ import { Exame } from 'src/app/models/exame';
 import { TabelaExameService } from 'src/app/services/tabela-exame.service';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 import { ActivatedRoute } from '@angular/router';
+import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'labM-exame-cadastro',
@@ -18,8 +19,8 @@ export class ExameCadastroComponent implements OnInit {
   id: any = ""
   idPaciente: any = ""
   nomeExame: String = ""
-  dataExame: String = ""
-  horaExame: String = `${this.date.getHours()}:${this.date.getMinutes()}`
+  dataExame: String = DateService.prototype.dataAtual()
+  horaExame: String = DateService.prototype.horarioAtual()
   tipo: String = ""
   laboratorio: String = ""
   url: String = ""
@@ -37,6 +38,7 @@ export class ExameCadastroComponent implements OnInit {
           this.deletar(this.id)
           break;
       }
+      this.controle = "adicionar"
       form.reset()
     }
   }
@@ -45,7 +47,7 @@ export class ExameCadastroComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.paramMap.get("id")
     if (this.id) {
       let resultados = TabelaExameService.prototype.buscar()
-      resultado = resultados.find((item) => item.idPaciente.includes(this.id))
+      resultado = resultados.find((item) => item.id.includes(this.id))
       this.id = resultado.id
       this.idPaciente = resultado.idPaciente
       this.nomeExame = resultado.nomeExame
@@ -89,6 +91,9 @@ export class ExameCadastroComponent implements OnInit {
   colocaId(id: any, nome: String) {
     this.idPaciente = id
     this.pacienteNome = nome
+  }
+  formReset(){
+    this.controle = "adicionar"
   }
   constructor(private activatedRoute: ActivatedRoute) {
 

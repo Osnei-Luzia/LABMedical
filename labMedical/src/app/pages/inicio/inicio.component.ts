@@ -17,16 +17,16 @@ export class InicioComponent {
     [{
       nome: "Pacientes",
       quantidade: TabelaPacienteService.prototype.buscar().length,
-      img: "../../../assets/Sem título.png", //icon path
+      img: "../../../assets/paciente.svg", //icon path
     },
     {
       nome: "Consultas",
       quantidade: TabelaConsultaService.prototype.buscar().length,
-      img: "../../../assets/Sem título.png",
+      img: "../../../assets/consulta.svg",
     },
     {
       nome: "Exames",
       quantidade: TabelaExameService.prototype.buscar().length,
-      img: "../../../assets/Sem título.png"
+      img: "../../../assets/exame.svg"
     }]
 }

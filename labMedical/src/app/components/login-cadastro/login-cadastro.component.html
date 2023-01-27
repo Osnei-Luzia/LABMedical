@@ -2,14 +2,14 @@
     <div class="card-body">
         <div class="mb-3 form-group">
             <label for="nome" class="form-label">Nome</label>
-            <input #inputNome="ngModel" type="text" class="form-control" name="nome" [(ngModel)]="nome" required
+            <input #inputNome="ngModel" type="text" class="form-control" name="nome" [(ngModel)]="usuario.nome" required
                 placeholder="Digite seu nome">
             <div *ngIf="!inputNome.valid&&inputNome.touched" class="alert alert-danger">Campo Obrigatório
             </div>
         </div>
         <div class="mb-3 form-group">
             <label for="emailCadastro" class="form-label">E-mail</label>
-            <input #inputEmail="ngModel" type="email" class="form-control" name="emailCadastro" [(ngModel)]="email"
+            <input #inputEmail="ngModel" type="email" class="form-control" name="emailCadastro" [(ngModel)]="usuario.email"
                 required email labMAvailableEmail placeholder="exemplo@exemplo.com">
             <div *ngIf="inputEmail.errors?.['required']&&inputEmail.touched" class="alert alert-danger">
                 Campo Obrigatório</div>
@@ -19,25 +19,26 @@
                 Email Indisponível</div>
         </div>
         <div class="mb-3 form-group">
-            <label for="senhaCadastro" class="form-label">Senha</label>
-            <input #inputSenha="ngModel" type="password" class="form-control" name="senhaCadastro" [(ngModel)]="senha"
-                required labMMatchingPassword value="" [senha]="inputConfirmarSenha.value" minlength="8"
-                placeholder="Mínimo de 8 caracteres">
-            <div *ngIf="inputSenha.errors?.['required']&&inputSenha.touched" class="alert alert-danger">
-                Campo Obrigatório</div>
-            <div *ngIf="inputSenha.errors?.['minlength']&&inputSenha.touched" class="alert alert-danger">
-                Mínimo de 8 caracteres</div>
+            <label for="imagem" class="form-label">Imagem de Perfil</label>
+            <input #inputImagem="ngModel" type="text" class="form-control" name="imagem" [(ngModel)]="usuario.imagem"
+                placeholder="URL da Imagem">
         </div>
-        <div class="mb-3 form-group">
-            <label for="senhaValida" class="form-label">Confirmar Senha</label>
-            <input #inputConfirmarSenha="ngModel" type="password" class="form-control" name="senhaValida"
-                placeholder="Insira a senha novamente" [(ngModel)]="confirmarSenha" required labMMatchingPassword
-                value="" [senha]="inputSenha.value">
-            <div *ngIf="inputConfirmarSenha.errors?.['required']&&inputConfirmarSenha.touched"
-                class="alert alert-danger">Campo
-                Obrigatório</div>
-            <div *ngIf="inputConfirmarSenha.errors?.['matchingPassword']&&!inputConfirmarSenha.errors?.['required']"
-                class="alert alert-danger">Senhas não conferem</div>
+        <div ngModelGroup="senhas" #checkSenhas="ngModelGroup" labMMatchingPassword>
+            <div class="mb-3 form-group">
+                <label for="senhaCadastro" class="form-label">Senha</label>
+                <input #inputSenha="ngModel" type="password" class="form-control" name="senhaCadastro"
+                    [(ngModel)]="usuario.senha" required minlength="8" placeholder="Mínimo de 8 caracteres">
+                <div *ngIf="inputSenha.errors?.['required']&&inputSenha.touched" class="alert alert-danger">
+                    Campo Obrigatório</div>
+                <div *ngIf="inputSenha.errors?.['minlength']&&inputSenha.touched" class="alert alert-danger">
+                    Mínimo de 8 caracteres</div>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="senhaValida" class="form-label">Confirmar Senha</label>
+                <input #inputConfirmarSenha="ngModel" type="password" class="form-control" name="senhaValida"
+                    placeholder="Insira a senha novamente" [(ngModel)]="confirmarSenha" required>
+            </div>
+            <div *ngIf="checkSenhas.errors?.['matchingPassword']&&inputConfirmarSenha.touched&&inputSenha.touched" class="alert alert-danger">Senhas não conferem</div>
         </div>
     </div>
     <div class="d-flex justify-content-between">

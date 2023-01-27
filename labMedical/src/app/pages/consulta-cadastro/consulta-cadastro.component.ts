@@ -3,6 +3,7 @@ import { Consulta } from 'src/app/models/consulta';
 import { TabelaConsultaService } from 'src/app/services/tabela-consulta.service';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 import { ActivatedRoute } from '@angular/router';
+import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'labM-consulta-cadastro',
@@ -18,9 +19,8 @@ export class ConsultaCadastroComponent implements OnInit{
   id: any = ""
   idPaciente: any = ""
   motivo: String = ""
-  dataConsulta: String = ""
-  //$("dataConsulta").datepicker("setDate", new Date().getFullYear()) ---- Instalar JQuery e setar default para o datePicker
-  horaConsulta: String = `${this.date.getHours()}:${this.date.getMinutes()}`;
+  dataConsulta: String = DateService.prototype.dataAtual()
+  horaConsulta: String = DateService.prototype.horarioAtual()
   descricao: String = ""
   medicacao: String = ""
   precaucoes: String = ""
@@ -38,6 +38,7 @@ export class ConsultaCadastroComponent implements OnInit{
           this.deletar(this.id)
           break;
       }
+      this.controle = "adicionar"
       form.reset()
     }
   }
@@ -46,7 +47,7 @@ export class ConsultaCadastroComponent implements OnInit{
     this.id = this.activatedRoute.snapshot.paramMap.get("id")
     if (this.id) {
       let resultados = TabelaConsultaService.prototype.buscar()
-      resultado = resultados.find((item) => item.idPaciente.includes(this.id))
+      resultado = resultados.find((item) => item.id.includes(this.id))
       this.id = resultado.id
       this.idPaciente = resultado.idPaciente
       this.motivo = resultado.motivo
@@ -88,6 +89,9 @@ export class ConsultaCadastroComponent implements OnInit{
   colocaId(id: any, nome: String) {
     this.idPaciente = id
     this.pacienteNome = nome
+  }
+  formReset(){
+    this.controle = "adicionar"
   }
   constructor(private activatedRoute: ActivatedRoute) {
 

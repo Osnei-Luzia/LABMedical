@@ -1,15 +1,12 @@
-<form #cadastroPaciente="ngForm" (ngSubmit)="onSubmit(cadastroPaciente,$event.submitter.id)" class="container p-3 mt-3 border">
+<form #cadastroPaciente="ngForm" (ngSubmit)="onSubmit(cadastroPaciente,$event.submitter.id)"
+    class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
-        <!-- mostar nome no editar -->
-        <h3 class="text-center">Paciente</h3>
-        <hr>
         <h5>Identificação</h5>
-
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="nome" class="form-label">Nome</label>
-                <input #inputNome="ngModel" type="text" class="form-control" name="nome" [(ngModel)]="nome" required
-                    maxlength="64" minlength="8" placeholder="Informe seu nome completo">
+                <input #inputNome="ngModel" type="text" class="form-control" name="nome" [(ngModel)]="paciente.nome"
+                    required maxlength="64" minlength="8" placeholder="Informe seu nome completo">
                 <div *ngIf="inputNome.errors?.['required']&&inputNome.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputNome.errors?.['minlength']&&inputNome.touched" class="alert alert-danger">
@@ -17,19 +14,18 @@
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="genero" class="form-label">Gênero</label>
-                <select required #inputGenero="ngModel" class="form-select" name="genero" [(ngModel)]="genero">
+                <select required #inputGenero="ngModel" class="form-select" name="genero" [(ngModel)]="paciente.genero">
                     <option value="">Escolha</option>
                     <option value="m">Masculino</option>
                     <option value="f">Feminino</option>
                 </select>
                 <div *ngIf="inputGenero.errors?.['required']&&inputGenero.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
-                <!-- ngClass para erro -->
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="dataNascimento" class="form-label">Data de Nascimento</label>
                 <input #inputNascimento="ngModel" type="date" class="form-control" name="nascimento"
-                    [(ngModel)]="dataNascimento" required>
+                    [(ngModel)]="paciente.dataNascimento" required>
                 <div *ngIf="inputNascimento.errors?.['required']&&inputNascimento.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
             </div>
@@ -37,21 +33,20 @@
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="cpf" class="form-label">CPF</label>
-                <input #inputCpf="ngModel" type="text" class="form-control" name="cpf" [(ngModel)]="cpf"
+                <input #inputCpf="ngModel" type="text" class="form-control" name="cpf" [(ngModel)]="paciente.cpf"
                     placeholder="000.000.000-00" pattern="[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}" required>
                 <div *ngIf="inputCpf.errors?.['required']&&inputCpf.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputCpf.errors?.['pattern']&&inputCpf.touched" class="alert alert-danger">
                     Formato Inválido</div>
             </div>
-            <!-- validação de CPF -->
             <div class="d-flex flex-column flex-grow-1">
                 <label for="rg" class="form-label">RG e Orgão Expedidor</label>
                 <div class="input-group">
-                    <input #inputRg="ngModel" type="text" class="form-control" name="rg" [(ngModel)]="rg" required
-                        maxlength="20" placeholder="RG">
+                    <input #inputRg="ngModel" type="text" class="form-control" name="rg" [(ngModel)]="paciente.rg"
+                        required maxlength="20" placeholder="RG">
                     <input #inputOrgExpedidor="ngModel" type="text" class="form-control" name="orgEx"
-                        [(ngModel)]="orgEx" required placeholder="SSP-SP">
+                        [(ngModel)]="paciente.orgEx" required placeholder="SSP-SP">
                 </div>
                 <div *ngIf="inputRg.errors?.['required']&&inputRg.touched||inputOrgExpedidor.errors?.['required']&&inputOrgExpedidor.touched"
                     class="alert alert-danger">
@@ -60,7 +55,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="estadoCivil" class="form-label">Estado Civil</label>
                 <select required #inputEstadoCivil="ngModel" class="form-select" name="estadoCivil"
-                    [(ngModel)]="estadoCivil">
+                    [(ngModel)]="paciente.estadoCivil">
                     <option value="">Escolha</option>
                     <option value="solteiro">Solteiro(a)</option>
                     <option value="casado">Casado(a)</option>
@@ -70,17 +65,21 @@
                 </select>
                 <div *ngIf="inputEstadoCivil.errors?.['required']&&inputEstadoCivil.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
-                <!-- ngClass para erro -->
             </div>
-
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="imagem" class="form-label">Imagem</label>
+                <input #inputImagem="ngModel" type="text" class="form-control" name="Imagem"
+                    [(ngModel)]="paciente.imagem" placeholder="URL da Imagem">
+            </div>
         </section>
         <h5 class="mt-3">Contato</h5>
 
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1 ">
                 <label for="Telefone" class="form-label">Telefone</label>
-                <input #inputTelefone="ngModel" type="tel" class="form-control" name="telefone" [(ngModel)]="telefone"
-                    required pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9? ?[1-9])[0-9]{3}\-?[0-9]{4}[0-9]?$"
+                <input #inputTelefone="ngModel" type="tel" class="form-control" name="telefone"
+                    [(ngModel)]="paciente.telefone" required
+                    pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9? ?[1-9])[0-9]{3}\-?[0-9]{4}[0-9]?$"
                     placeholder="(99) 9 9999-99999">
                 <div *ngIf="inputTelefone.errors?.['required']&&inputTelefone.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
@@ -89,15 +88,15 @@
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="emailCadastro" class="form-label">E-mail</label>
-                <input #inputEmail="ngModel" type="email" class="form-control" name="emailCadastro" [(ngModel)]="email"
-                    email placeholder="exemplo@exemplo.com">
+                <input #inputEmail="ngModel" type="email" class="form-control" name="emailCadastro"
+                    [(ngModel)]="paciente.email" email placeholder="exemplo@exemplo.com">
                 <div *ngIf="inputEmail.errors?.['email']&&inputEmail.touched" class="alert alert-danger">
                     Insira email válido</div>
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="naturalidade" class="form-label">Naturalidade</label>
                 <input #inputNaturalidade="ngModel" type="text" class="form-control" name="naturalidade"
-                    [(ngModel)]="naturalidade" required maxlength="64" minlength="8" placeholder="Catarinense">
+                    [(ngModel)]="paciente.naturalidade" required maxlength="64" minlength="8" placeholder="Catarinense">
                 <div *ngIf="inputNaturalidade.errors?.['required']&&inputNaturalidade.touched"
                     class="alert alert-danger">
                     Campo Obrigatório</div>
@@ -109,8 +108,9 @@
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1 ">
                 <label for="contato" class="form-label">Contato para Emergência</label>
-                <input #inputContato="ngModel" type="tel" class="form-control" name="contato" [(ngModel)]="contato"
-                    required pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9? ?[1-9])[0-9]{3}\-?[0-9]{4}[0-9]?$"
+                <input #inputContato="ngModel" type="tel" class="form-control" name="contato"
+                    [(ngModel)]="paciente.contato" required
+                    pattern="^\(?[1-9]{2}\)? ?(?:[2-8]|9? ?[1-9])[0-9]{3}\-?[0-9]{4}[0-9]?$"
                     placeholder="(99) 9 9999-99999">
                 <div *ngIf="inputContato.errors?.['required']&&inputContato.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
@@ -123,18 +123,18 @@
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="convenio" class="form-label">Convênio</label>
-                <input #inputConvenio="ngModel" type="text" class="form-control" name="convenio" [(ngModel)]="convenio"
-                    placeholder="Nome do Convênio">
+                <input #inputConvenio="ngModel" type="text" class="form-control" name="convenio"
+                    [(ngModel)]="paciente.convenio" placeholder="Nome do Convênio">
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="convenioNumero" class="form-label">Número do Convênio</label>
                 <input #inputConvenio="ngModel" type="text" class="form-control" name="convenioNumero"
-                    [(ngModel)]="convenioNumero" placeholder="00">
+                    [(ngModel)]="paciente.convenioNumero" placeholder="00">
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="convenioValidade" class="form-label">Validade do Convênio</label>
                 <input #inputConvenio="ngModel" type="date" class="form-control" name="convenioValidade"
-                    [(ngModel)]="convenioValidade" placeholder="Validade do Convênio">
+                    [(ngModel)]="paciente.convenioValidade" placeholder="Validade do Convênio">
             </div>
         </section>
         <h5 class="mt-3">Cuidados Específicos</h5>
@@ -143,15 +143,15 @@
             <div class="flex-grow-1">
                 <label class="form-label" for="alergias">Alergias</label>
                 <textarea #inputAlergias="ngModel" type="text" class="form-control" name="alergias"
-                    style="resize:none; height:7rem" [(ngModel)]="alergias" placeholder="Liste as alergias"></textarea>
+                    style="resize:none; height:7rem" [(ngModel)]="paciente.alergias"
+                    placeholder="Liste as alergias"></textarea>
             </div>
             <div class="flex-grow-1" style="resize:disable">
                 <label class="form-label" for="cuidados">Cuidados Especiais</label>
                 <textarea #inputCuidados="ngModel" type="text" class="form-control" name="cuidados"
-                    style="resize:none; height:7rem" [(ngModel)]="cuidados"
+                    style="resize:none; height:7rem" [(ngModel)]="paciente.cuidados"
                     placeholder="Descreva os cuidados necessários"></textarea>
             </div>
-            <!-- ngModel typescript -->
         </section>
         <h5 class="mt-3">Endereço</h5>
         <section class="mb-3 form-group d-flex gap-3">
@@ -159,57 +159,60 @@
                 <button class="btn btn-outline-primary" type="button" id="button-addon2"
                     (click)="buscarCep()">Buscar</button>
                 <input name="cep" type="text" class="form-control" placeholder="CEP" aria-label="CEP"
-                    aria-describedby="button-addon2" [(ngModel)]="cep">
+                    aria-describedby="button-addon2" [(ngModel)]="paciente.cep">
             </div>
         </section>
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="cidade" class="form-label">Cidade</label>
                 <input #inputCidade="ngModel" type="text" class="form-control" name="cidade"
-                    [(ngModel)]="cepCampos.cidade" placeholder="Cidade">
+                    [(ngModel)]="paciente.cepCampos.cidade" placeholder="Cidade">
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="bairro" class="form-label">Bairro</label>
                 <input #inputBairro="ngModel" type="text" class="form-control" name="bairro"
-                    [(ngModel)]="cepCampos.bairro" placeholder="Bairro">
+                    [(ngModel)]="paciente.cepCampos.bairro" placeholder="Bairro">
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="estado" class="form-label">UF</label>
                 <input #inputEstado="ngModel" type="text" class="form-control" name="estado"
-                    [(ngModel)]="cepCampos.estado" placeholder="Estado">
+                    [(ngModel)]="paciente.cepCampos.estado" placeholder="Estado">
             </div>
         </section>
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="rua" class="form-label">Logradouro</label>
                 <input #inputRua="ngModel" type="text" class="form-control" name="rua"
-                    [(ngModel)]="cepCampos.logradouro" placeholder="Rua, Praça, Viela">
+                    [(ngModel)]="paciente.cepCampos.logradouro" placeholder="Rua, Praça, Viela">
             </div>
             <div class="d-flex flex-column flex-grow-3">
                 <label for="cepNumero" class="form-label">Número</label>
                 <input #inputCepNumero="ngModel" type="text" class="form-control" name="cepNumero"
-                    [(ngModel)]="cepCampos.numero" placeholder="000">
+                    [(ngModel)]="paciente.cepCampos.numero" placeholder="000">
             </div>
         </section>
         <section class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="complemento" class="form-label">Complemento</label>
                 <input #inputCep="ngModel" type="text" class="form-control" name="complemento"
-                    [(ngModel)]="cepCampos.complemento" placeholder="Apartamento 02">
+                    [(ngModel)]="paciente.cepCampos.complemento" placeholder="Apartamento 02">
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="pontoRef" class="form-label">Ponto de Referência</label>
                 <input #inputPontoRef="ngModel" type="text" class="form-control" name="pontoRef"
-                    [(ngModel)]="cepCampos.pontoRef" placeholder="Próximo de..., Casa Azul">
+                    [(ngModel)]="paciente.cepCampos.pontoRef" placeholder="Próximo de..., Casa Azul">
             </div>
         </section>
         <div class="d-flex justify-content-between">
             <div class="d-flex gap-2">
-                <button id="adicionar" type="submit" class="btn btn-primary" [disabled]="cadastroPaciente.valid&&controle=='adicionar'?false:true">Adicionar</button>
-                <button id="editar" type="submit" class="btn btn-primary" [disabled]="!cadastroPaciente.valid||controle!='editar'">Editar</button>
-                <button id="deletar" type="submit" class="btn btn-primary" [disabled]="controle!='editar'">Deletar</button>
+                <button id="adicionar" type="submit" class="btn btn-primary"
+                    [disabled]="cadastroPaciente.valid&&controle=='adicionar'?false:true">Adicionar</button>
+                <button id="editar" type="submit" class="btn btn-primary"
+                    [disabled]="!cadastroPaciente.valid||controle!='editar'">Editar</button>
+                <button id="deletar" type="submit" class="btn btn-primary"
+                    [disabled]="controle!='editar'">Deletar</button>
             </div>
-            <button type="reset" class="btn btn-primary">Limpar</button>
+            <button type="reset" (click)="formReset()" class="btn btn-primary">Limpar</button>
         </div>
     </div>
 </form>

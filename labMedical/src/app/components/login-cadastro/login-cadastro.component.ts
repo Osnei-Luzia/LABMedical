@@ -8,19 +8,19 @@ import { TabelaUsuarioService } from 'src/app/services/tabela-usuario.service';
   styleUrls: ['./login-cadastro.component.css']
 })
 export class LoginCadastroComponent {
-  nome: String = ""
-  email: String = ""
-  senha: String = ""
+  usuario: Usuario = {
+    id: "",
+    nome: "",
+    email: "",
+    imagem: "",
+    senha: "",
+    logado:""
+  }
+  
   confirmarSenha: String = ""
-
   onSubmit(form: any) {
     if (form.valid) {
-      let usuario: Usuario = {
-        id: "",
-        nome: this.nome,
-        email: this.email,
-        senha: this.senha
-      }
+      let usuario: Usuario = this.usuario
       TabelaUsuarioService.prototype.cadastrar(usuario)
       form.reset()
     }

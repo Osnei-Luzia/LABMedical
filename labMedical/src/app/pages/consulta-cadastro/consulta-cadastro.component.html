@@ -14,7 +14,7 @@
         <hr *ngIf="pacienteNome">
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
-                <input hidden required>
+                <input name="idPaciente" [(ngModel)]="idPaciente"  hidden required>
                 <label for="motivo" class="form-label">Motivo</label>
                 <input #inputMotivo="ngModel" type="text" class="form-control" name="motivo" [(ngModel)]="motivo"
                     required maxlength="64" minlength="8" placeholder="Informe o motivo da consulta">
@@ -83,7 +83,7 @@
                     [disabled]="controle!='editar'">Deletar</button>
             </div>
 
-            <button type="reset" class="btn btn-primary">Limpar</button>
+            <button type="reset" (click)="formReset()" class="btn btn-primary">Limpar</button>
         </div>
     </div>
 </form>
