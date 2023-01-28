@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalAvisoComponent } from 'src/app/components/modal-aviso/modal-aviso.component';
+import { ModalAvisoComponent } from 'src/app/shared/modal-aviso/modal-aviso.component';
 import { Constants } from 'src/app/constants/constants';
 import { Paciente } from 'src/app/models/paciente';
 import { DateService } from 'src/app/services/date.service';

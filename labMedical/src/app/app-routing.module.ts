@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './guards/login.guard';
 import { ConsultaCadastroComponent } from './pages/consulta-cadastro/consulta-cadastro.component';
 import { ExameCadastroComponent } from './pages/exame-cadastro/exame-cadastro.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
   {
-    path: "home", component: MainComponent,
+    path: "home", component: MainComponent, canActivate:[LoginGuard],
     children: [
       { path: "inicio", component: InicioComponent, },
       { path: 'paciente', component: PacienteCadastroComponent, },

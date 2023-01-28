@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ResolveEnd, Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { TabelaUsuarioService } from 'src/app/services/tabela-usuario.service';
@@ -11,6 +11,7 @@ import { TabelaUsuarioService } from 'src/app/services/tabela-usuario.service';
 })
 export class ToolbarComponent implements OnInit {
   nomePagina: String | undefined
+  @Output() loading: EventEmitter<any> = new EventEmitter()
   usuario: Usuario = {
     id: "",
     nome: "",
@@ -50,6 +51,7 @@ export class ToolbarComponent implements OnInit {
     rota.events.subscribe((event) => {
       if (event instanceof ResolveEnd) {
         this.setNomePagina(event.url)
+        this.loading.emit(true)
       }
     })
   }
