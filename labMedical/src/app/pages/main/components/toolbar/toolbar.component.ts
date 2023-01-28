@@ -51,7 +51,7 @@ export class ToolbarComponent implements OnInit {
     rota.events.subscribe((event) => {
       if (event instanceof ResolveEnd) {
         this.setNomePagina(event.url)
-        this.loading.emit(true)
+        //this.loading.emit(true)
       }
     })
   }

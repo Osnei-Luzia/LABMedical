@@ -25,22 +25,23 @@ export class TabelaPacienteService {
     })
     return storage
   }
-  deletar(id: String) {
+  deletar(id: String): false|true {
     let resultados = TabelaConsultaService.prototype.buscar()
     let resultado = resultados.find((item) => item.idPaciente.includes(id))
     if (resultado) {
       alert("O paciente ainda possui consultas cadastradas")
-      return
+      return false
     }
     resultados = TabelaExameService.prototype.buscar()
     resultado = resultados.find((item) => item.idPaciente.includes(id))
     if (resultado) {
       alert("O paciente ainda possui exames cadastradas")
-      return
+      return false
     }
     resultados = this.buscar()
     resultado = resultados.find((item) => item.id.includes(id))
     localStorage.removeItem(`paciente_${resultado.id}`)
+    return true
   }
   constructor() { }
 }

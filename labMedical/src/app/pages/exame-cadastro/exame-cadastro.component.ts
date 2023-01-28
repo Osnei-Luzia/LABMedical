@@ -68,6 +68,8 @@ export class ExameCadastroComponent implements OnInit {
   editar() {
     TabelaExameService.prototype.cadastrar(this.exame)
     this.mensagemModal.chamarModal("Exame","editado")
+    this.id = ""
+    this.exame.id = ""
   }
   deletar(id: String) {
     TabelaExameService.prototype.deletar(id)

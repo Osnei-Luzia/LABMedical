@@ -10,8 +10,11 @@
 <form #cadastroConsulta="ngForm" (ngSubmit)="onSubmit(cadastroConsulta,$event.submitter.id)"
     class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
-        <h3 *ngIf="pacienteNome" class="text-center">{{pacienteNome}}</h3>
-        <hr *ngIf="pacienteNome">
+        <h3 *ngIf="pacienteNome else templateErro" class="text-center">{{pacienteNome}}</h3>
+        <ng-template #templateErro>
+            <h3 class="text-center">Escolha um Paciente</h3>
+        </ng-template>
+        <hr>
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <input name="idPaciente" [(ngModel)]="consulta.idPaciente"  hidden required>
