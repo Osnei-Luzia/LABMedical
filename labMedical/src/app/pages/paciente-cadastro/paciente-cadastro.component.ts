@@ -70,7 +70,7 @@ export class PacienteCadastroComponent implements OnInit {
           this.adicionar()
           break;
         case "editar":
-          this.editar(this.id)
+          this.editar()
           break;
         case "deletar":
           this.deletar(this.id)
@@ -84,7 +84,7 @@ export class PacienteCadastroComponent implements OnInit {
     TabelaPacienteService.prototype.cadastrar(this.paciente)
     this.mensagemModal.chamarModal("Paciente","cadastrado")
   }
-  editar(id: String) {
+  editar() {
     TabelaPacienteService.prototype.cadastrar(this.paciente)
     this.mensagemModal.chamarModal("Paciente","editado")
   }

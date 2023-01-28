@@ -36,7 +36,7 @@ export class ConsultaCadastroComponent implements OnInit {
           this.adicionar()
           break;
         case "editar":
-          this.editar(this.id)
+          this.editar()
           break;
         case "deletar":
           this.deletar(this.id)
@@ -65,7 +65,7 @@ export class ConsultaCadastroComponent implements OnInit {
     TabelaConsultaService.prototype.cadastrar(this.consulta)
     this.mensagemModal.chamarModal("Consulta", "cadastrada")
   }
-  editar(id: String) {
+  editar() {
     TabelaConsultaService.prototype.cadastrar(this.consulta)
     this.mensagemModal.chamarModal("Consulta", "editada")
   }
