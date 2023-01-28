@@ -89,8 +89,8 @@ export class PacienteCadastroComponent implements OnInit {
     this.mensagemModal.chamarModal("Paciente","editado")
   }
   deletar(id: String) {
-    TabelaPacienteService.prototype.deletar(id)
-    this.mensagemModal.chamarModal("Paciente","deletado")
+    TabelaPacienteService.prototype.deletar(id)?
+    this.mensagemModal.chamarModal("Paciente","deletado"):""
   }
   
   async buscarCep() {
@@ -99,7 +99,7 @@ export class PacienteCadastroComponent implements OnInit {
       resultadoCep = await resultadoCep.json()
       this.paciente.cepCampos = resultadoCep
     } catch {
-      alert("Cep Inválido --fazer um catch melhor")
+      alert("Cep Inválido")
     }
   }
   formReset() {

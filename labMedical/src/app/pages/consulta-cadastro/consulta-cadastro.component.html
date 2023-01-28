@@ -1,7 +1,7 @@
 <div class="container">
     <labM-barra-pesquisa (listaPacientes)="recebedorEvento($event)" data-bs-toggle="collapse"
         data-bs-target="#listaPacientes"></labM-barra-pesquisa>
-    <ul *ngFor="let paciente of pacientes" class="collapse vertical-group" id="listaPacientes">
+    <ul *ngFor="let paciente of pacientes" class="collapse vertical-group list-unstyled" id="listaPacientes">
         <li>
             <button (click)="colocaId(paciente.id,paciente.nome)" class="dropdown-item bg-light">{{paciente.nome}}</button>
         </li>
@@ -10,8 +10,11 @@
 <form #cadastroConsulta="ngForm" (ngSubmit)="onSubmit(cadastroConsulta,$event.submitter.id)"
     class="container p-3 mt-3 border">
     <div class="d-flex flex-column justify-content-center">
-        <h3 *ngIf="pacienteNome" class="text-center">{{pacienteNome}}</h3>
-        <hr *ngIf="pacienteNome">
+        <h3 *ngIf="pacienteNome else templateErro" class="text-center">{{pacienteNome}}</h3>
+        <ng-template #templateErro>
+            <h3 class="text-center">Escolha um Paciente</h3>
+        </ng-template>
+        <hr>
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <input name="idPaciente" [(ngModel)]="consulta.idPaciente"  hidden required>

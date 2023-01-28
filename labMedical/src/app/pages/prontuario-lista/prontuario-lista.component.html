@@ -1,7 +1,10 @@
 <div class="container">
     <labM-barra-pesquisa (listaPacientes)="recebedorEvento($event)"></labM-barra-pesquisa>
     <!-- lista de pacientes -->
-    <labM-prontuario-table [pacientes]="pacientes"></labM-prontuario-table>
+    <labM-prontuario-table *ngIf="pacientes.length else templateErro" [pacientes]="pacientes"></labM-prontuario-table>
+    <ng-template #templateErro>
+        <h3>Não há Pacientes cadastrados</h3>
+    </ng-template>
 </div>
 
 

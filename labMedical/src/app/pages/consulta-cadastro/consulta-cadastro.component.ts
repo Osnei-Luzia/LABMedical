@@ -68,6 +68,8 @@ export class ConsultaCadastroComponent implements OnInit {
   editar() {
     TabelaConsultaService.prototype.cadastrar(this.consulta)
     this.mensagemModal.chamarModal("Consulta", "editada")
+    this.id = ""
+    this.consulta.id = ""
   }
   deletar(id: String) {
     TabelaConsultaService.prototype.deletar(id)
