@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { ModalAvisoComponent } from '../components/modal-aviso/modal-aviso.component';
+import { ModalAvisoComponent } from '../shared/modal-aviso/modal-aviso.component';
 
 @Injectable({
   providedIn: 'root'
