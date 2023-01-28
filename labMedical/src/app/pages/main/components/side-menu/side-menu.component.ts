@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TabelaUsuarioService } from 'src/app/services/tabela-usuario.service';
 
 @Component({
@@ -13,4 +13,5 @@ export class SideMenuComponent {
     resultado.logado = ""
     TabelaUsuarioService.prototype.cadastrar(resultado)
   }
+  
 }
