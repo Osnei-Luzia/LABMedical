@@ -1,1 +1,12 @@
-<p>modal-aviso works!</p>
+<div #template>
+  <div class="alert alert-warning border p-4">
+    <h3 class="text-center">Aviso</h3>
+    <hr>
+  </div>
+  <div class="modal-body text-center">
+    <h4>{{texto.pagina}} foi {{texto.acao}}</h4>
+  </div>
+  <div class="d-flex justify-content-end m-3">
+    <button class="btn btn-primary w-25" (click)="modalRef.hide()">Ok</button>
+  </div>
+</div>

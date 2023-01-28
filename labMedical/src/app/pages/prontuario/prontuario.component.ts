@@ -18,21 +18,26 @@ export class ProntuarioComponent implements OnInit {
   consultas: Consulta[] | undefined
   exames: Exame[] | undefined
   ngOnInit(): void {
-    
+
   }
   constructor(private activatedRoute: ActivatedRoute) {
     this.id = this.activatedRoute.snapshot.paramMap.get("id")
     let resultados = TabelaPacienteService.prototype.buscar()
     this.paciente = resultados.find((item) => item.id.includes(this.id))
-
     resultados = TabelaConsultaService.prototype.buscar()
     resultados = resultados.filter((item) => item.idPaciente.includes(this.id))
-    this.consultas = resultados.sort((item)=>item.dataConsulta).reverse()
-    
+    this.consultas = resultados.sort((itemA, itemB) => {
+      let data1: Date = new Date(itemA.dataConsulta)
+      let data2: Date = new Date(itemB.dataConsulta)
+      return data1.getTime() - data2.getTime()
+    })
+
     resultados = TabelaExameService.prototype.buscar()
     resultados = resultados.filter((item) => item.idPaciente.includes(this.id))
-    this.exames = resultados.sort((item)=>item.dataExame).reverse()
-
-    //ajustar Sort
+    this.exames = resultados.sort((itemA, itemB) => {
+      let data1: Date = new Date(itemA.dataExame)
+      let data2: Date = new Date(itemB.dataExame)
+      return data1.getTime() - data2.getTime()
+    })
   }
 }

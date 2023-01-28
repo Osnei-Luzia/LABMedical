@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
+import { ModalMensagem } from 'src/app/services/modal-mensagem.service';
 import { TabelaUsuarioService } from 'src/app/services/tabela-usuario.service';
 
 @Component({
@@ -16,13 +17,14 @@ export class LoginCadastroComponent {
     senha: "",
     logado:""
   }
-  
   confirmarSenha: String = ""
   onSubmit(form: any) {
     if (form.valid) {
       let usuario: Usuario = this.usuario
       TabelaUsuarioService.prototype.cadastrar(usuario)
+      this.mensagemModal.chamarModal("Usuário","cadastrado")
       form.reset()
     }
   }
+  constructor(private mensagemModal: ModalMensagem){}
 }

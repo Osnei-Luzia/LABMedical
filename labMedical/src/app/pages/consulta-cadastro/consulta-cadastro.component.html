@@ -14,9 +14,9 @@
         <hr *ngIf="pacienteNome">
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
-                <input name="idPaciente" [(ngModel)]="idPaciente"  hidden required>
+                <input name="idPaciente" [(ngModel)]="consulta.idPaciente"  hidden required>
                 <label for="motivo" class="form-label">Motivo</label>
-                <input #inputMotivo="ngModel" type="text" class="form-control" name="motivo" [(ngModel)]="motivo"
+                <input #inputMotivo="ngModel" type="text" class="form-control" name="motivo" [(ngModel)]="consulta.motivo"
                     required maxlength="64" minlength="8" placeholder="Informe o motivo da consulta">
                 <div *ngIf="inputMotivo.errors?.['required']&&inputMotivo.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
@@ -25,15 +25,15 @@
             </div>
             <div class="d-flex flex-column flex-grow-2">
                 <label for="dataConsulta" class="form-label">Data de Consulta</label>
-                <input #inputData="ngModel" type="date" [placeholder]="dataConsulta" class="form-control"
-                    name="dataConsulta" [(ngModel)]="dataConsulta" required>
+                <input #inputData="ngModel" type="date" [placeholder]="consulta.dataConsulta" class="form-control"
+                    name="dataConsulta" [(ngModel)]="consulta.dataConsulta" required>
                 <div *ngIf="inputData.errors?.['required']&&inputData.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
             </div>
             <div class="d-flex flex-column flex-grow-2">
                 <label for="horaConsulta" class="form-label">Hora de Consulta</label>
                 <input #inputHora="ngModel" type="time" class="form-control text-center" name="horaConsulta"
-                    [(ngModel)]="horaConsulta" required>
+                    [(ngModel)]="consulta.horaConsulta" required>
                 <div *ngIf="inputHora.errors?.['required']&&inputHora.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
             </div>
@@ -42,7 +42,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="descricao" class="form-label">Descrição</label>
                 <textarea #inputDescricao="ngModel" type="text" class="form-control" name="descricao"
-                    style="resize:none; height:7rem" [(ngModel)]="descricao" placeholder="Descreva o problema" required
+                    style="resize:none; height:7rem" [(ngModel)]="consulta.descricao" placeholder="Descreva o problema" required
                     minlength="16" maxlength="1024"></textarea>
                 <div *ngIf="inputDescricao.errors?.['required']&&inputDescricao.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
@@ -54,7 +54,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="medicacao" class="form-label">Medicação Receitada</label>
                 <textarea #inputMedicacao="ngModel" type="text" class="form-control" name="medicacao"
-                    style="resize:none; height:7rem" [(ngModel)]="medicacao" placeholder="Receita"></textarea>
+                    style="resize:none; height:7rem" [(ngModel)]="consulta.medicacao" placeholder="Receita"></textarea>
                 <div *ngIf="inputMedicacao.errors?.['required']&&inputMedicacao.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputMedicacao.errors?.['minlength']&&inputMedicacao.touched" class="alert alert-danger">
@@ -65,7 +65,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="precaucoes" class="form-label">Dosagem Receitada</label>
                 <textarea #inputPrecaucoes="ngModel" type="text" class="form-control" name="precaucoes"
-                    style="resize:none; height:7rem" [(ngModel)]="precaucoes" placeholder="Dosagem e Precauções"
+                    style="resize:none; height:7rem" [(ngModel)]="consulta.precaucoes" placeholder="Dosagem e Precauções"
                     required maxlength="256 " minlength="16"></textarea>
                 <div *ngIf="inputPrecaucoes.errors?.['required']&&inputPrecaucoes.touched" class="alert alert-danger">
                     Campo Obrigatório</div>

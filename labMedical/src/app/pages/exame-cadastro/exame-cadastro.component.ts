@@ -4,6 +4,7 @@ import { TabelaExameService } from 'src/app/services/tabela-exame.service';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 import { ActivatedRoute } from '@angular/router';
 import { DateService } from 'src/app/services/date.service';
+import { ModalMensagem } from 'src/app/services/modal-mensagem.service';
 
 @Component({
   selector: 'labM-exame-cadastro',
@@ -15,16 +16,19 @@ export class ExameCadastroComponent implements OnInit {
   controle: String = "adicionar"
   pacientes: any = TabelaPacienteService.prototype.buscar()
   pacienteNome: String = ""
-
   id: any = ""
-  idPaciente: any = ""
-  nomeExame: String = ""
-  dataExame: String = DateService.prototype.dataAtual()
-  horaExame: String = DateService.prototype.horarioAtual()
-  tipo: String = ""
-  laboratorio: String = ""
-  url: String = ""
-  resultados: String = ""
+
+  exame: Exame = {
+    id: "",
+    idPaciente: "",
+    nomeExame: "",
+    dataExame: DateService.prototype.dataAtual(),
+    horaExame: DateService.prototype.horarioAtual(),
+    tipo: "",
+    laboratorio: "",
+    url: "",
+    resultados: ""
+  }
   onSubmit(form: any, submitId: any) {
     if (form.valid) {
       switch (submitId) {
@@ -32,7 +36,7 @@ export class ExameCadastroComponent implements OnInit {
           this.adicionar()
           break;
         case "editar":
-          this.editar(this.id)
+          this.editar()
           break;
         case "deletar":
           this.deletar(this.id)
@@ -48,15 +52,7 @@ export class ExameCadastroComponent implements OnInit {
     if (this.id) {
       let resultados = TabelaExameService.prototype.buscar()
       resultado = resultados.find((item) => item.id.includes(this.id))
-      this.id = resultado.id
-      this.idPaciente = resultado.idPaciente
-      this.nomeExame = resultado.nomeExame
-      this.dataExame = resultado.dataExame
-      this.horaExame = resultado.horaExame
-      this.tipo = resultado.tipo
-      this.laboratorio = resultado.laboratorio
-      this.url = resultado.url
-      this.resultados = resultado.resultados
+      this.exame = resultado
       this.controle = "editar"
     } else {
       this.controle = "adicionar"
@@ -66,36 +62,25 @@ export class ExameCadastroComponent implements OnInit {
     this.pacientes = pacientes
   }
   adicionar() {
-    TabelaExameService.prototype.cadastrar(this.setExame())
+    TabelaExameService.prototype.cadastrar(this.exame)
+    this.mensagemModal.chamarModal("Exame","cadastrado")
   }
-  editar(id: String) {
-    TabelaExameService.prototype.cadastrar(this.setExame(id))
+  editar() {
+    TabelaExameService.prototype.cadastrar(this.exame)
+    this.mensagemModal.chamarModal("Exame","editado")
   }
   deletar(id: String) {
     TabelaExameService.prototype.deletar(id)
-  }
-  setExame(id?: String) {
-    let exame: Exame = {
-      id: id ? id : "",
-      idPaciente: this.idPaciente,
-      nomeExame: this.nomeExame,
-      dataExame: this.dataExame,
-      horaExame: this.horaExame,
-      tipo: this.tipo,
-      laboratorio: this.laboratorio,
-      url: this.url,
-      resultados: this.resultados
-    }
-    return exame
+    this.mensagemModal.chamarModal("Exame","deletado")
   }
   colocaId(id: any, nome: String) {
-    this.idPaciente = id
+    this.exame.idPaciente = id
     this.pacienteNome = nome
   }
   formReset(){
     this.controle = "adicionar"
   }
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private mensagemModal: ModalMensagem) {
 
   }
 }

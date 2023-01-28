@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ModalAvisoComponent } from 'src/app/components/modal-aviso/modal-aviso.component';
 import { Constants } from 'src/app/constants/constants';
 import { Paciente } from 'src/app/models/paciente';
 import { DateService } from 'src/app/services/date.service';
+import { ModalMensagem } from 'src/app/services/modal-mensagem.service';
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 
 @Component({
@@ -46,7 +48,7 @@ export class PacienteCadastroComponent implements OnInit {
     imagem: ""
 
   }
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private mensagemModal: ModalMensagem) {
 
   }
   ngOnInit(): void {
@@ -68,7 +70,7 @@ export class PacienteCadastroComponent implements OnInit {
           this.adicionar()
           break;
         case "editar":
-          this.editar(this.id)
+          this.editar()
           break;
         case "deletar":
           this.deletar(this.id)
@@ -80,12 +82,15 @@ export class PacienteCadastroComponent implements OnInit {
   }
   adicionar() {
     TabelaPacienteService.prototype.cadastrar(this.paciente)
+    this.mensagemModal.chamarModal("Paciente","cadastrado")
   }
-  editar(id: String) {
+  editar() {
     TabelaPacienteService.prototype.cadastrar(this.paciente)
+    this.mensagemModal.chamarModal("Paciente","editado")
   }
   deletar(id: String) {
     TabelaPacienteService.prototype.deletar(id)
+    this.mensagemModal.chamarModal("Paciente","deletado")
   }
   
   async buscarCep() {
