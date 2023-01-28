@@ -54,7 +54,7 @@ Cada cartão apresenta do paciente, seu Nome, uma imagem de perfil caso tenha si
 <img src="https://github.com/Osnei-Luzia/LABMedical/blob/main/labMedical/src/assets/readMeImagens/paginaInicial.png" width="600"><br>
 
 Também há a opção de editar as informaçoes do paciente clicando tanto na parte superior do cartão quanto no botão de Editar abaixo.<br>
-<img src="https://github.com/Osnei-Luzia/LABMedical/blob/main/labMedical/src/assets/readMeImagens/cardPaciente.png" width="600"><br>
+<img src="https://github.com/Osnei-Luzia/LABMedical/blob/main/labMedical/src/assets/readMeImagens/cardPaciente.png" width="300"><br>
 
 <a  id="navegacao"></a>
 ### Navegação
