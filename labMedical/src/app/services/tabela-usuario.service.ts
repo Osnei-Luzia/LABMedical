@@ -6,8 +6,7 @@ import { Usuario } from '../models/usuario';
 })
 export class TabelaUsuarioService {
   cadastrar(data: Usuario) {
-    data.id = crypto.randomUUID()
-    // eliminar nulls
+    data.id ? "" : data.id = crypto.randomUUID();
     localStorage.setItem(`usuario_${data.id}`, JSON.stringify(data))
   }
   buscar() {
@@ -18,7 +17,6 @@ export class TabelaUsuarioService {
       storage[Index] = JSON.parse(storage[Index])
     })
     return storage
-    //Object.values(storage).forEach((usuario) => { usuario.email == email ? console.log(usuario.email) : "" })
   }
   constructor() { }
 }
