@@ -24,6 +24,7 @@ import { ProntuarioListaComponent } from './pages/prontuario-lista/prontuario-li
 import { ProntuarioTableComponent } from './components/prontuario-table/prontuario-table.component';
 import { ProntuarioComponent } from './pages/prontuario/prontuario.component';
 import { ModalAvisoComponent } from './components/modal-aviso/modal-aviso.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ModalAvisoComponent } from './components/modal-aviso/modal-aviso.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

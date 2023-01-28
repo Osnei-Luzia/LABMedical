@@ -4,26 +4,30 @@ import { TabelaConsultaService } from 'src/app/services/tabela-consulta.service'
 import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service';
 import { ActivatedRoute } from '@angular/router';
 import { DateService } from 'src/app/services/date.service';
+import { ModalMensagem } from 'src/app/services/modal-mensagem.service';
 
 @Component({
   selector: 'labM-consulta-cadastro',
   templateUrl: './consulta-cadastro.component.html',
   styleUrls: ['./consulta-cadastro.component.css']
 })
-export class ConsultaCadastroComponent implements OnInit{
+export class ConsultaCadastroComponent implements OnInit {
   date: Date = new Date()
   controle: String = "adicionar"
   pacientes: any = TabelaPacienteService.prototype.buscar()
   pacienteNome: String = ""
-
   id: any = ""
-  idPaciente: any = ""
-  motivo: String = ""
-  dataConsulta: String = DateService.prototype.dataAtual()
-  horaConsulta: String = DateService.prototype.horarioAtual()
-  descricao: String = ""
-  medicacao: String = ""
-  precaucoes: String = ""
+
+  consulta: Consulta = {
+    id: "",
+    idPaciente: "",
+    motivo: "",
+    dataConsulta: DateService.prototype.dataAtual(),
+    horaConsulta: DateService.prototype.horarioAtual(),
+    descricao: "",
+    medicacao: "",
+    precaucoes: "",
+  }
 
   onSubmit(form: any, submitId: any) {
     if (form.valid) {
@@ -48,14 +52,7 @@ export class ConsultaCadastroComponent implements OnInit{
     if (this.id) {
       let resultados = TabelaConsultaService.prototype.buscar()
       resultado = resultados.find((item) => item.id.includes(this.id))
-      this.id = resultado.id
-      this.idPaciente = resultado.idPaciente
-      this.motivo = resultado.motivo
-      this.dataConsulta = resultado.dataConsulta
-      this.horaConsulta = resultado.horaConsulta
-      this.descricao = resultado.descricao
-      this.medicacao = resultado.medicacao
-      this.precaucoes = resultado.precaucoes
+      this.consulta = resultado
       this.controle = "editar"
     } else {
       this.controle = "adicionar"
@@ -65,35 +62,26 @@ export class ConsultaCadastroComponent implements OnInit{
     this.pacientes = pacientes
   }
   adicionar() {
-    TabelaConsultaService.prototype.cadastrar(this.setConsulta())
+    TabelaConsultaService.prototype.cadastrar(this.consulta)
+    this.mensagemModal.chamarModal("Consulta", "cadastrada")
   }
   editar(id: String) {
-    TabelaConsultaService.prototype.cadastrar(this.setConsulta(id))
+    TabelaConsultaService.prototype.cadastrar(this.consulta)
+    this.mensagemModal.chamarModal("Consulta", "editada")
   }
   deletar(id: String) {
     TabelaConsultaService.prototype.deletar(id)
+    this.mensagemModal.chamarModal("Consulta", "deletada")
   }
-  setConsulta(id?: String) {
-    let consulta: Consulta = {
-      id: id ? id : "",
-      idPaciente: this.idPaciente,
-      motivo: this.motivo,
-      dataConsulta: this.dataConsulta,
-      horaConsulta: this.horaConsulta,
-      descricao: this.descricao,
-      medicacao: this.medicacao,
-      precaucoes: this.precaucoes,
-    }
-    return consulta
-  }
+
   colocaId(id: any, nome: String) {
-    this.idPaciente = id
+    this.consulta.idPaciente = id
     this.pacienteNome = nome
   }
-  formReset(){
+  formReset() {
     this.controle = "adicionar"
   }
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private mensagemModal: ModalMensagem) {
 
   }
 }

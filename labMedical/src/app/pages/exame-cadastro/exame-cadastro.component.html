@@ -15,9 +15,10 @@
         <hr *ngIf="pacienteNome">
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
+                <input name="idPaciente" [(ngModel)]="exame.idPaciente" hidden required>
                 <label for="nomeExame" class="form-label">Exame</label>
                 <input #inputNomeExame="ngModel" type="text" class="form-control" name="nomeExame"
-                    [(ngModel)]="nomeExame" required maxlength="64" minlength="8" placeholder="Informe o nome do exame">
+                    [(ngModel)]="exame.nomeExame" required maxlength="64" minlength="8" placeholder="Informe o nome do exame">
                 <div *ngIf="inputNomeExame.errors?.['required']&&inputNomeExame.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputNomeExame.errors?.['minlength']&&inputNomeExame.touched" class="alert alert-danger">
@@ -25,15 +26,15 @@
             </div>
             <div class="d-flex flex-column flex-grow-2">
                 <label for="dataExame" class="form-label">Data de Consulta</label>
-                <input #inputData="ngModel" type="date" [placeholder]="dataExame" class="form-control" name="dataExame"
-                    [(ngModel)]="dataExame" required>
+                <input #inputData="ngModel" type="date" [placeholder]="exame.dataExame" class="form-control" name="dataExame"
+                    [(ngModel)]="exame.dataExame" required>
                 <div *ngIf="inputData.errors?.['required']&&inputData.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
             </div>
             <div class="d-flex flex-column flex-grow-2">
                 <label for="horaExame" class="form-label">Hora de Consulta</label>
                 <input #inputHora="ngModel" type="time" class="form-control text-center" name="horaExame"
-                    [(ngModel)]="horaExame" required>
+                    [(ngModel)]="exame.horaExame" required>
                 <div *ngIf="inputHora.errors?.['required']&&inputHora.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
             </div>
@@ -41,7 +42,7 @@
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="tipo" class="form-label">Tipo de Exame</label>
-                <input #inputTipo="ngModel" type="text" class="form-control" name="Tipo" [(ngModel)]="tipo" required
+                <input #inputTipo="ngModel" type="text" class="form-control" name="Tipo" [(ngModel)]="exame.tipo" required
                     maxlength="32" minlength="4" placeholder="Imagem, Laboratorial">
                 <div *ngIf="inputTipo.errors?.['required']&&inputTipo.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
@@ -51,7 +52,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="laboratorio" class="form-label">Laboratório</label>
                 <input #inputLaboratorio="ngModel" type="text" class="form-control" name="laboratorio"
-                    [(ngModel)]="laboratorio" required maxlength="32" minlength="4" placeholder="Nome do Laboratório">
+                    [(ngModel)]="exame.laboratorio" required maxlength="32" minlength="4" placeholder="Nome do Laboratório">
                 <div *ngIf="inputLaboratorio.errors?.['required']&&inputLaboratorio.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
                 <div *ngIf="inputLaboratorio.errors?.['minlength']&&inputLaboratorio.touched"
@@ -62,7 +63,7 @@
         <div class="mb-3 form-group d-flex gap-3">
             <div class="d-flex flex-column flex-grow-1">
                 <label for="url" class="form-label">URL de Exame</label>
-                <input #inputUrl="ngModel" type="text" class="form-control" name="url" [(ngModel)]="url"
+                <input #inputUrl="ngModel" type="text" class="form-control" name="url" [(ngModel)]="exame.url"
                     placeholder="www.example.com/example.pdf">
             </div>
         </div>
@@ -70,7 +71,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="resultados" class="form-label">Resultados</label>
                 <textarea #inputResultados="ngModel" type="text" class="form-control" name="resultados"
-                    style="resize:none; height:10rem" [(ngModel)]="resultados" placeholder="Resultados do exame"
+                    style="resize:none; height:10rem" [(ngModel)]="exame.resultados" placeholder="Resultados do exame"
                     required minlength="16" maxlength="1024"></textarea>
                 <div *ngIf="inputResultados.errors?.['required']&&inputResultados.touched" class="alert alert-danger">
                     Campo Obrigatório</div>

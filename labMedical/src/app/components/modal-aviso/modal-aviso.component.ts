@@ -1,5 +1,6 @@
-import { Component, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Component } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalMensagem } from 'src/app/services/modal-mensagem.service';
 
 @Component({
   selector: 'labM-modal-aviso',
@@ -7,10 +8,14 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./modal-aviso.component.css']
 })
 export class ModalAvisoComponent {
-  modalRef?: BsModalRef;
-  constructor(private modalService: BsModalService) {}
- 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+  modalRef: BsModalRef
+  texto: any = {
+    pagina: this.mensagem.pagina,
+    acao: this.mensagem.acao
   }
+  
+  constructor(private ref: BsModalRef, private mensagem: ModalMensagem) {
+    this.modalRef = ref
+  }
+  
 }
