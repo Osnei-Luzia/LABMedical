@@ -1,7 +1,7 @@
 <div class="container">
     <labM-barra-pesquisa (listaPacientes)="recebedorEvento($event)" data-bs-toggle="collapse"
         data-bs-target="#listaPacientes"></labM-barra-pesquisa>
-    <ul *ngFor="let paciente of pacientes" class="collapse vertical-group" id="listaPacientes">
+    <ul *ngFor="let paciente of pacientes" class="collapse vertical-group list-unstyled" id="listaPacientes">
         <li>
             <button (click)="colocaId(paciente.id,paciente.nome)"
                 class="dropdown-item bg-light">{{paciente.nome}}</button>
