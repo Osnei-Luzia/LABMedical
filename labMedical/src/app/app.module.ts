@@ -15,8 +15,9 @@ import { PagesModule } from './pages/pages.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PagesModule,
     ModalModule.forRoot(),
-    PagesModule
+    
   ],
   exports:[
   ]

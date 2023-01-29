@@ -12,6 +12,7 @@ import { ProntuarioComponent } from './prontuario/prontuario.component';
 import { LoginModule } from './login/login.module';
 import { MainModule } from './main/main.module';
 import { CadastrosModule } from './cadastros.module';
+import { PagesRoutingModule } from './pages-routing.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CadastrosModule } from './cadastros.module';
     PipesModule,
     MainModule,
     CadastrosModule,
-    LoginModule
+    LoginModule,
+    PagesRoutingModule
   ],
   exports: [
     InicioComponent,

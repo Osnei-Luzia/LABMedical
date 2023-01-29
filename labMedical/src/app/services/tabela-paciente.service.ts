@@ -35,7 +35,7 @@ export class TabelaPacienteService {
     resultados = TabelaExameService.prototype.buscar()
     resultado = resultados.find((item) => item.idPaciente.includes(id))
     if (resultado) {
-      alert("O paciente ainda possui exames cadastradas")
+      alert("O paciente ainda possui exames cadastrados")
       return false
     }
     resultados = this.buscar()

@@ -10,7 +10,6 @@ import { TabelaPacienteService } from 'src/app/services/tabela-paciente.service'
 export class BarraPesquisaComponent {
   @Output() listaPacientes: EventEmitter<any> = new EventEmitter()
   pesquisa: String = ""
-  //pacientes: any = TabelaPacienteService.prototype.buscar()
   filtrar() {
     let resultados = TabelaPacienteService.prototype.buscar()
     let resultado = resultados.filter((item) => item.nome.toLowerCase().includes(this.pesquisa.toLowerCase()))
