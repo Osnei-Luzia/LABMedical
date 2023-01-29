@@ -79,7 +79,7 @@
                 <label for="Telefone" class="form-label">Telefone</label>
                 <input #inputTelefone="ngModel" type="tel" class="form-control" name="telefone"
                     [(ngModel)]="paciente.telefone" required
-                    pattern="^\([1-9]{2}\) (:[2-8]|9? ?[1-9])[0-9]{3}\-[0-9]{4}[0-9]?$"
+                    pattern="^\([1-9]{2}\) ?(:[2-8]|9? ?[1-9])[0-9]{3}\-[0-9]{4}[0-9]?$"
                     placeholder="(99) 9 9999-99999">
                 <div *ngIf="inputTelefone.errors?.['required']&&inputTelefone.touched" class="alert alert-danger">
                     Campo Obrigatório</div>
