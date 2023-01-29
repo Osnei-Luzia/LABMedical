@@ -169,4 +169,3 @@ Para a instalação do Angular em sua IDE, execute
    [ngx-Modal]: <https://www.npmjs.com/package/ngx-modal>
    [ViaCEP]: <https://viacep.com.br/>
    [NodeJS]: <https://nodejs.org/en/>
-c
