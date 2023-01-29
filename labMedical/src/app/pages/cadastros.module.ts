@@ -15,9 +15,9 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
-  exports:[
+  exports: [
     BarraPesquisaComponent,
     PacienteCadastroComponent,
     ConsultaCadastroComponent,

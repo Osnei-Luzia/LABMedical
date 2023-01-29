@@ -65,14 +65,13 @@
                         <p>{{exame.nomeExame}}</p>
                         <h5>Laboratório</h5>
                         <p>{{exame.laboratorio}}</p>
-                        <p>{{exame.url}}</p>
                     </div>
                     <div class="d-flex flex-grow-1 justify-content-between">
                         <div class="p-2">
                             <h4>Resultados</h4>
                             <p class="text-wrap">{{exame.resultados}}</p>
                         </div>
-                        <div *ngIf="exame.url" class="m-1"><a href="{{exame.url}}"><img style="width:2rem;" src="../../../assets/anexo.svg"></a></div>
+                        <div *ngIf="exame.url" class="m-1"><a target="blank" href="{{exame.url}}"><img style="width:2rem;" src="../../../assets/anexo.svg"></a></div>
                     </div>
                     <button class="btn btn-outline-primary rounded-0 link"
                         [routerLink]="['/home/exame',exame.id]">Editar</button>

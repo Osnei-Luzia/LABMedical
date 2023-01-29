@@ -46,7 +46,7 @@
                     <input #inputRg="ngModel" type="text" class="form-control" name="rg" [(ngModel)]="paciente.rg"
                         required maxlength="20" placeholder="RG">
                     <input #inputOrgExpedidor="ngModel" type="text" class="form-control" name="orgEx"
-                        [(ngModel)]="paciente.orgEx" required placeholder="SSP-SP">
+                        [(ngModel)]="paciente.orgEx" required maxlength="20" placeholder="SSP-SP">
                 </div>
                 <div *ngIf="inputRg.errors?.['required']&&inputRg.touched||inputOrgExpedidor.errors?.['required']&&inputOrgExpedidor.touched"
                     class="alert alert-danger">
@@ -166,7 +166,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="cidade" class="form-label">Cidade</label>
                 <input #inputCidade="ngModel" type="text" class="form-control" name="cidade"
-                    [(ngModel)]="paciente.cepCampos.cidade" placeholder="Cidade">
+                    [(ngModel)]="paciente.cepCampos.localidade" placeholder="Cidade">
             </div>
             <div class="d-flex flex-column flex-grow-1">
                 <label for="bairro" class="form-label">Bairro</label>
@@ -176,7 +176,7 @@
             <div class="d-flex flex-column flex-grow-1">
                 <label for="estado" class="form-label">UF</label>
                 <input #inputEstado="ngModel" type="text" class="form-control" name="estado"
-                    [(ngModel)]="paciente.cepCampos.estado" placeholder="Estado">
+                    [(ngModel)]="paciente.cepCampos.uf" placeholder="Estado">
             </div>
         </section>
         <section class="mb-3 form-group d-flex gap-3">

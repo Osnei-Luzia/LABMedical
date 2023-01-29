@@ -56,5 +56,3 @@ export class ToolbarComponent implements OnInit {
     })
   }
 }
-
-// /home/paciente/52d65164-fa64-46e6-ab05-9e13f4c7c64e

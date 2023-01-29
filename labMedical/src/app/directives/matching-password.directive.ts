@@ -3,8 +3,6 @@ import { NG_VALIDATORS, AbstractControl, Validator, ValidationErrors, ValidatorF
 
 export function matchingPassword(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    console.log(control.value)
-    console.log(control)
     if ((control.value.senhaCadastro != control.value.senhaValida)) {
       return {
         matchingPassword: {
